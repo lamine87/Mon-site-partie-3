@@ -1,0 +1,87 @@
+footer{
+    background-color: #080808c9;
+}
+
+.bg-dark{
+    background-color:  #0a0a0a !important;
+    margin-top: 0;
+    padding: 6px;
+    font-size: 1.5em;
+
+}
+#navbarCollapse a{
+   font-size: 15px;
+   margin-left: 5px;
+
+}
+#navbarCollapse a:hover {
+    color: blue;
+}
+
+.carousel{
+    margin-top: 40px;
+}
+.carousel-item{
+    text-align: center;
+    width: 100%;
+    height:400px;
+}
+
+#piste{
+    margin-top: 50px;
+
+}
+
+p{
+    color: #0a0a0a;
+}
+.plus-haut{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 50px;
+    right: 20px;
+    font-size: 20px;
+    text-align: right;
+}
+.logo img{
+    width: 55px;
+    height: 35px;
+}
+nav{
+    display: inline-block;
+}
+h2{
+    color: #1d10bf;
+}
+h5{
+    color: #1d10bf;
+}
+
+
+/* Annimation image (Pub) */
+
+#conteneur1{
+
+   /* box-shadow: 0 15px 10px -5px #777; */
+
+}
+.d1{
+
+    margin-top: 50px;
+    background-color: #EDEDED;
+    background-image: url(".public/images/gambi.jpg");
+    background-size: contain;
+    animation: defilement1 10s linear infinite;
+}
+
+@keyframes defilement1{
+    0%{transform: translate(0,0);}
+    100%{transform: translate(-288px,0);}
+}
+
+.d1:hover{
+    animation-play-state: paused;
+}
+/* FIN annimation image (Pub) */
