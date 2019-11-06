@@ -64,15 +64,11 @@ h5{
 
 #conteneur1{
 
-   /* box-shadow: 0 15px 10px -5px #777; */
+    /*box-shadow: 0 15px 10px -5px #777;*/
 
 }
 .d1{
-
     margin-top: 50px;
-    background-color: #EDEDED;
-    background-image: url(".public/images/gambi.jpg");
-    background-size: contain;
     animation: defilement1 10s linear infinite;
 }
 
@@ -82,6 +78,7 @@ h5{
 }
 
 .d1:hover{
+
     animation-play-state: paused;
 }
 /* FIN annimation image (Pub) */

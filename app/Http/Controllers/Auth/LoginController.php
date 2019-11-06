@@ -27,7 +27,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/afficheBackend';
+    protected $redirectTo = '/home';
 
 
     /**
@@ -40,11 +40,7 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
-    public function index()
-    {
-        return view('auth.register');
-    }
-//
+
 //    public function back(Request $request)
 //    {
 //        $email = $request->email;
@@ -63,26 +59,5 @@ class LoginController extends Controller
 
 
 
-//
-//    public function affiche(Request $request)
-//    {
-//        $email = $request->email;
-//        $password = $request->password;
-//
-//        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-//            $user = Auth::user();
-//
-//            //  if ($user->hasRole('Administrateur')) {
-//
-//            return redirect()->route('afficheBackend');
-////            } else {
-////
-////                return redirect()->route('home_shop');
-////            }
-//
-//    } else {
-//        return redirect()->route('home')->with('message', 'impossible de vous identifier');
-//    }
- //       }
- //   }
+
 }

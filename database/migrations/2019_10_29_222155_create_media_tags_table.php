@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateArtisteRecommandesTable extends Migration
+class CreateMediaTagsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,14 @@ class CreateArtisteRecommandesTable extends Migration
      */
     public function up()
     {
-        Schema::create('artiste_recommandes', function (Blueprint $table) {
+        Schema::create('media_tags', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
             $table->string('photo_principale');
             $table->text('description')->nullable();
-            $table->string('lien_facebook');
-            $table->string('lien_instagram');
-            $table->boolean('is_online')->default(0);
+            $table->string('lien_facebook')->nullable();
+            $table->string('lien_instagram')->nullable();
 
-            $table->unsignedBigInteger('movis_id');
-            $table->foreign('movis_id')->references('id')->on('movis')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -35,6 +32,6 @@ class CreateArtisteRecommandesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('artiste_recommandes');
+        Schema::dropIfExists('media_tags');
     }
 }

@@ -11,25 +11,42 @@
 |
 */
 
-Route::get('/','Shop\MainController@index')->name('home_shop');
+Route::get('/','Shop\MainController@index')->name('shop_home');
 
-Route::get('/recommandation','Shop\MainController@recommande')->name('artiste_recommande');
+Route::get('recommandation{id}','Shop\MainController@recommande')->name('artiste_recommande');
 
-Route::get('/voir/artiste/{id}','Shop\MainController@voirArtiste')->name('voir_artiste');
+Route::get('voir/artiste/{id}','Shop\MainController@voirArtiste')->name('voir_artiste');
+                     //Affichage du Tag
+Route::get('tag/{id}','Shop\MainController@tag')->name('voir_tag');
 
-Route::get('/tag/{id}','Shop\MainController@voirTag')->name('voir_tag');
+//Route::get('affiche/{id}','Shop\MainController@affiche')->name('afficheTag');
+
+
+
+
 
 Auth::routes();
                //S'identifier
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/backend', 'HomeController@index')->name('home');
 
-              // Affichage de la page login
            // Affichage de la page creer un compte
-Route::get('/enregistrement', 'Shop\ProcessController@enregistrer')->name('enregistrer_user');
+Route::get('/regi', 'Shop\ProcessController@enregistrer')->name('enregistrer_user');
 
-Route::get('/backend', 'Shop\ProcessController@back')->name('afficheBackend');
+              //Affichage de la page index.blade
+Route::get('music', 'Backend\ArtisteController@index')->name('ajoutMusic');
 
-Route::get('/music', 'Shop\ProcessController@ajoute')->name('ajoutMusic');
+Route::post('backend/store','Backend\ArtisteController@store')->name('backend_artiste_store');
+
+
+//Backend
+
+
+
+//Route::get('/backend/edit{id}','Backend\ProcessController@edit')->name('backend_edit');
+//
+//Route::post('/backend/update{id}','Backend\ProcessController@update')->name('backend_edit');
+//
+//Route::post('/backend/delete{id}','Backend\ProcessController@delete')->name('backend_delete');
 
 
 //Route::get('/compte', 'Auth\LoginController@index')->name('creer_compte');

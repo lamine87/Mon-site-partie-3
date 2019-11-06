@@ -7,8 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Artiste extends Model
 {
     //
-    public function movis()
-    {
-        return $this->belongsTo('App\Movi');
-    }
+//    public function mouve()
+//    {
+//        return $this->belongsTo('App\Mouve');
+//   }
 }

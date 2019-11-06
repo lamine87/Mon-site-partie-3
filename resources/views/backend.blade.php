@@ -39,10 +39,10 @@
             <ul class="navbar-nav mr-auto">
 
                 <li class="nav-item active">
-                    <a href="#" target="_self" class="nav-link " href="#">Contact</a>
+                    <a href="{{route('shop_home')}}" target="_self" class="nav-link " >Accueil</a>
                 </li>
                 <li class="nav-item active">
-                    <a href="{{route('home')}}" target="_self" class="nav-link " >Quitter</a>
+                    @include('info_user')
                 </li>
 
             </ul>
@@ -51,8 +51,9 @@
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
             </form>
         </div>
-
     </nav>
+    @include('messages_flash')
+
 </header>
 <!--fin de navbar-->
 <br><br><br><br>
@@ -106,7 +107,7 @@
 
             <div class="col-md-8 col-12 mt-5">
 
-                <p style="line-height: 1.7rem">On sait depuis longtemps que travailler avec du texte lisible
+                <p style="line-height: 1.7rem; color: #cce5ff">On sait depuis longtemps que travailler avec du texte lisible
 
                 </p>
             </div>
@@ -159,7 +160,7 @@
     </div>
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <div class="footer-copyright text-center py-3" style="color: #cce5ff">© 2019 Copyright:
         <a href="#"> MM223.com</a>
     </div>
     <!-- Copyright -->

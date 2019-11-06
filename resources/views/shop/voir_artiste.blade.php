@@ -6,16 +6,16 @@
         <div class="row" >
             <div class="col-md-8 col-sm-12 col-lg-8" id="piste" style="float: left">
                     <div class="embed-responsive embed-responsive-16by9">
-                        <iframe width="560" height="315" class="embed-responsive-item" src="{{$artiste->movis->url_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <iframe width="560" height="315" class="embed-responsive-item" src="{{$mouves->url_video}}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
-                 <p class="card-text"><strong>{{$artiste->movis->description}}</strong></p>
+                 <p class="card-text"><strong>{{$mouves->description}}</strong></p>
                 </div>
 
             <div class="col-md-4 col-sm-12 col-lg-4" >
                 <div class="embed-responsive embed-responsive-16by9">
-                <div id="" style="float: right" >
-                    <div class="d1 conteneur1 embed-responsive-item"></div>
-                </div>
+                    <div class="d1 conteneur1 embed-responsive-item" >
+                        <img src="{{asset('images/'.$artiste->photo_principale)}}"  class="card-img-top img-fluid " alt="Responsive">
+                    </div>
             </div>
             </div>
         </div>

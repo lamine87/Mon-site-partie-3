@@ -1,13 +1,13 @@
-@extends('page2')
+@extends('page_tag')
 @section('content')
     <div class="album py-5 bg-light" xmlns="http://www.w3.org/1999/html">
         <div class="container">
             <div class="row">
-                @foreach($artistes as $artiste)
+                @foreach($media_tags as $media_tag)
                     <div class="col-md-2 box-shadow">
-                        <a href="{{route('voir_artiste',['id'=>$artiste->id])}}" target="_self">
-                            <img src="{{asset('images/'.$artiste->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
-                            <p class="card-text"><strong>{{$artiste->nom}}</strong><br>{{$artiste->description}}</p>
+                        <a href="{{route('voir_tag',['id'=>$media_tag->tag_id])}}" target="_self">
+                            <img src="{{asset('images/'.$media_tag->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
+                            <p class="card-text"><strong>{{$media_tag->nom}}</strong><br>{{$media_tag->description}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                             </div>
                         </a>
@@ -15,7 +15,7 @@
                 @endforeach
             </div>
             <div class="col-12 text-center">
-                {{$artistes->links()}}
+                {{$media_tags->links()}}
             </div>
         </div>
     </div>

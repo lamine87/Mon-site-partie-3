@@ -15,7 +15,7 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <script defer src="{{asset('css/bootstrap.min.css')}}" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
 </head>
 
@@ -106,7 +106,7 @@
 
             <div class="col-md-8 col-12 mt-5">
 
-                <p style="line-height: 1.7rem">On sait depuis longtemps que travailler avec du texte lisible
+                <p style="line-height: 1.7rem; color: #cce5ff">On sait depuis longtemps que travailler avec du texte lisible
 
                 </p>
             </div>
@@ -159,7 +159,7 @@
     </div>
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2019 Copyright:
+    <div class="footer-copyright text-center py-3" style="color: #cce5ff">© 2019 Copyright:
         <a href="#"> MM223.com</a>
     </div>
     <!-- Copyright -->

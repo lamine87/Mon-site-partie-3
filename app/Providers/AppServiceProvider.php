@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -23,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-        view()->composer(['shop','process'],HeaderComposer::class);
+
+        view()->composer(['Backend','artiste'],HeaderComposer::class);
     }
 }

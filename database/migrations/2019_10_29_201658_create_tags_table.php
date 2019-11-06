@@ -15,6 +15,10 @@ class CreateTagsTable extends Migration
     {
         Schema::create('tags', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nom');
+            $table->string('lien_facebook')->nullable();
+            $table->string('lien_instagram')->nullable();
+            $table->boolean('is_online')->default(0);
             $table->timestamps();
         });
     }

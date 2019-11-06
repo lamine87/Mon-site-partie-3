@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddFieldTagIdTableMovis extends Migration
+class AddFieldTagIdTableMediaTags extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,10 @@ class AddFieldTagIdTableMovis extends Migration
      */
     public function up()
     {
-        Schema::table('movis', function (Blueprint $table) {
+        Schema::table('media_tags', function (Blueprint $table) {
             //
             $table->unsignedBigInteger('tag_id')->nullable();
+            $table->foreign('tag_id')->references('id')->on('tags')->onDelete('set null');
             Schema::enableForeignKeyConstraints();
         });
     }
@@ -27,7 +28,7 @@ class AddFieldTagIdTableMovis extends Migration
      */
     public function down()
     {
-        Schema::table('movis', function (Blueprint $table) {
+        Schema::table('media_tags', function (Blueprint $table) {
             //
         });
     }

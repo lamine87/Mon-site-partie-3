@@ -6,20 +6,24 @@
                 @foreach($artistes as $artiste)
                     <div class="col-md-3 box-shadow">
                         <a href="{{route('voir_artiste',['id'=>$artiste->id])}}" target="_self">
-                            <img src="{{asset('images/'.$artiste->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
-                            <p class="card-text"><strong>{{$artiste->nom}}</strong><br>{{$artiste->description}}</p>
-                            <div class="d-flex justify-content-between align-items-center">
+                            <img src="{{asset('storage/uploads/'.$artiste->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
+
+                            <div class="text-center">
+                                <p class="card-text"><strong>{{$artiste->nom}}</strong><br>{{$artiste->description}}</p>
+                                <a href="{{asset($artiste->lien_facebook)}}" type="button" class="btn btn-warning" target="_blank">Facebook</a>
+                                <a href="{{asset($artiste->lien_instagram)}}" type="button" class="btn btn-warning" target="_blank">instagram</a>
+                                <br><br>
                             </div>
+
                         </a>
                     </div>
                 @endforeach
             </div>
+            <br>
             @foreach($tags as $tag)
-                <a href="#" target="_self">
-                    <a href="{{route('voir_tag',['id'=>$tag->id])}}" type="button" class="btn btn-primary">{{$tag->nom}}</a>
-                </a>
+                <a href="{{route('voir_tag',['id'=>$tag->id])}}" type="button" class="btn btn-primary">{{$tag->nom}}</a>
             @endforeach
-            <br><br><br>
+           <br><br> <br>
             <div class="col-12 text-center">
                 {{$artistes->links()}}
             </div>

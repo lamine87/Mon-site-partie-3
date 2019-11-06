@@ -18,13 +18,8 @@ class CreateArtistesTable extends Migration
             $table->string('nom');
             $table->string('photo_principale');
             $table->text('description')->nullable();
-            $table->string('lien_facebook');
-            $table->string('lien_instagram');
-            $table->boolean('is_online')->default(0);
-
-            $table->unsignedBigInteger('movis_id');
-            $table->foreign('movis_id')->references('id')->on('movis')->onDelete('cascade');
-
+            $table->string('lien_facebook')->nullable();
+            $table->string('lien_instagram')->nullable();
             $table->timestamps();
         });
     }

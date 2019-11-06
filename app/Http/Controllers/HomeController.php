@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Artiste;
+use App\Mouve;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -23,6 +26,14 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $artiste = DB::table('artistes')
+            ->orderBy('created_at', 'desc')->paginate(6);
+        $mouve = DB::table('mouves')
+            ->orderBy('created_at', 'desc')->paginate(6);
+
+
+        return view('backend.artiste', ['artistes' => $artiste,'mouves' => $mouve]);
     }
+
+
 }

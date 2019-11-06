@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateRolesTable extends Migration
+class CreateTagMouvesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateRolesTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles', function (Blueprint $table) {
+        Schema::create('tag_mouves', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nom');
             $table->text('description')->nullable();
+            $table->string('url_video');
+            $table->boolean('is_youtube')->default(0);
 
+            $table->unsignedBigInteger('media_tag_id')->nullable();
+            $table->foreign('media_tag_id')->references('id')->on('media_tags')->onDelete('set null');
             $table->timestamps();
         });
     }
@@ -29,6 +32,6 @@ class CreateRolesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('roles');
+        Schema::dropIfExists('tag_mouves');
     }
 }
