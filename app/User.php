@@ -50,5 +50,9 @@ class User extends Authenticatable
         return false;
     }
 
+    public function mouves(){
+        return $this->hasMany('App\Mouve');
+    }
+
 
 }

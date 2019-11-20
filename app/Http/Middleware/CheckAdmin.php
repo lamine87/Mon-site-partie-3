@@ -16,7 +16,7 @@ class CheckAdmin
     public function handle($request, Closure $next)
     {
         if (!$request->user() || !$request->user()->hasRole('Administrateur')) {
-            return redirect()->route('afficheBackend');
+            return redirect()->route('shop_home');
         }
         return $next($request);
     }

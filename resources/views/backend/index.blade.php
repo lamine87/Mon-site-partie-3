@@ -17,13 +17,11 @@
                         </div>
                     @endif
                     <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="nom">Nom</label>
-                            <input type="text" class="form-control" id="nom" name="nom" value="{{old('nom')}}">
-                        </div>
-                        <div class="form-group col-md-4">
+                        <div class="form-group col-md-8">
                             <label for="url_video">Url Vidéo</label>
                             <input type="text" class="form-control" id="url_video" name="url video" value="{{old('url_video')}}">
+                            <a class="nav-link " href="{{route('aide_utiliser')}}"> Pour trouver l'url video cliquez ici</a>
+
                         </div>
 
                     </div>
@@ -35,7 +33,7 @@
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
-                            <label for="nom">Lien Facabook</label>
+                            <label for="nom">Lien Facebook</label>
                             <input type="text" class="form-control" id="lien_facebook" name="lien facebook" value="{{old('lien_facebook')}}">
                         </div>
                         <div class="form-group col-md-4">

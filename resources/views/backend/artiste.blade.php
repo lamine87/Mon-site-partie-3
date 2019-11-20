@@ -26,40 +26,48 @@
                         <tr>
                             <th>Numero</th>
                             <th>Nom</th>
-                            <th>Description</th>
                             <th>Lien Facebook</th>
                             <th>Lien Instagram</th>
                             <th>Image</th>
-                            <th>Modifier/Supprimer</th>
+                            <th>Modifier</th>
+                            <th>Supprimer</th>
 
                         </tr>
                         </thead>
-                        @foreach($artistes as $artiste)
+                        @foreach($mouves as $mouve)
                             <tbody>
                             <tr class="table-info">
-                                <td>{{$artiste->id}}</td>
-                                <td>{{$artiste->nom}}</td>
-                                <td>{{$artiste->description}}</td>
-                                <td>{{$artiste->lien_facebook}}</td>
-                                <td>{{$artiste->lien_instagram}}</td>
-                                <td>
-                                    <img style="border: 4px solid #5b64f1" src="{{asset('storage/uploads/'.$artiste->photo_principale)}}" width="50" class="img-thumbnail" alt=""> </td>
+                                <td>{{$mouve->id}}</td>
+
+                          @foreach($users as $user)
+                                    @if($user->id == $mouve->user_id)
+                                          <td>{{$user->name}}</td>
+                                    @endif
+                                @endforeach
+
+                                @foreach($users as $user)
+                                    @if($user->id == $mouve->user_id)
+                                       <td>{{$user->lien_facebook}}</td>
+                                       <td>{{$user->lien_instagram}}</td>
+                                    @endif
+                                @endforeach
 
                                 <td>
-{{--                                    <a  href="{{route('backend_edit',['id'=>$artiste->id])}}" class="btn btn-sm btn-primary">Modifier</a>--}}
-
-{{--                                    <a onclick="return(confirm('sans regret ?'))" href="{{route('backend_delete',['id'=>$artiste->id])}}" class="btn btn-sm btn-outline-danger">Supprimer</a>--}}
-
+                                    <img style="border: 4px solid #5b64f1" src="{{asset('storage/uploads/'.$mouve->photo_principale)}}" width="50" class="img-thumbnail" alt="">
                                 </td>
-                            </tr>
-                            </tbody>
-                        @endforeach
-                        </table>
-                     </div>
-                  </div>
-         <div class="col-12 text-center">
-            {{$artistes->links()}}
-        </div>
+
+                                <td>
+                                    <a  href="{{route('backend_edit',['id'=>$mouve->id])}}" class="btn btn-sm btn-primary">Modifier</a>
+                                </td>
+                                <td>
+                                <a onclick="return(confirm('sans regret ?'))" href="{{route('backend_delete',['id'=>$mouve->id])}}" class="btn btn-sm btn-outline-danger">Supprimer</a>
+                        </td>
+                       </tr>
+                    </tbody>
+                @endforeach
+                </table>
+             </div>
+          </div>
     </div>
 </div>
 
@@ -93,9 +101,8 @@
            </div>
         </div>
         <div class="col-12 text-center">
-            {{$mouves->links()}}
+{{--            {{$mouves->links()}}--}}
         </div>
     </div>
-</div>
-
+  </div>
 @endsection

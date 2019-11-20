@@ -7,8 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Mouve extends Model
 {
     //
-//   public function Artiste()
-//   {
-//      return $this->hasMany('App\Artiste');
-//    }
+   public function user()
+   {
+      return $this->belongsTo('App\User');
+    }
+
 }

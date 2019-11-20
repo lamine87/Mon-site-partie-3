@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('img/icon/logo.png')}}">
+    <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}">
 
     <title>MM223.com</title>
 
@@ -24,7 +24,7 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
-            <div class="icon-accueil"><a href="#"><img src="{{asset('img/icon/logo_white.png')}}"></a>
+            <div class="icon-accueil"><a href="#"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
             </div>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -41,7 +41,7 @@
                     <a class="nav-link " href="#">Actualité <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Top-10</a>
+                    <a class="nav-link" href="#">Collection</a>
                 </li>
                 <li class="nav-item active">
                     <a href="#" target="_self" class="nav-link " href="#">Contact</a>
@@ -75,30 +75,31 @@
                     </ol>
 
 
-                    <div class="carousel-inner ">
-                        <div class="carousel-item active ">
-                            <img src="{{asset('images/mhd-font-ecran.jpg')}}"  class="embed-responsive " alt="First Slide">
-                            <div class="carousel-caption">
-                                <h2>Meilleur artiste du mois</h2>
-                                <h5>Je remercie tous mes fans</h5>
-                            </div>
-
-                        </div>
+                    <div class="carousel-inner embed-responsive ">
+                          <div class="carousel-item active">
+                            <img src="{{asset('images/maitre-gims-dadju.jpg')}}" class="embed-responsive" alt="First Slide">
+{{--                            <div class="carousel-caption">--}}
+{{--                                <h2>Meilleur artiste du mois</h2>--}}
+{{--                                <h5>Je remercie tous mes fans</h5>--}}
+{{--                            </div>--}}
+                          </div>
                         <div class="carousel-item">
-                            <img src="{{asset('images/booba-font-ecran.jpg')}}" class="embed-responsive " alt="Second Slide">
-                            <div class="carousel-caption">
-                                <h2>Meilleur artiste du mois</h2>
-                                <h5>Je remercie tous mes fans</h5>
-                            </div>
-                        </div>
+                            <img src="{{asset('images/booba-font-ecran.jpg')}}" class="embed-responsive"  alt="Second Slide">
+{{--                            <div class="carousel-caption">--}}
+{{--                                <h2>Meilleur artiste du mois</h2>--}}
+{{--                                <h5>Je remercie tous mes fans</h5>--}}
+{{--                            </div>--}}
+                          </div>
                         <div class="carousel-item ">
-                            <img src="{{asset('images/mhd-font-ecran.jpg')}}" class="embed-responsive " alt="Third Slide">
-                            <div class="carousel-caption">
-                                <h2>Meilleur artiste du mois</h2>
-                                <h5>Je remercie tous mes fans</h5>
-                            </div>
-                        </div>
-                    </div>
+                            <img src="{{asset('images/mhd-font-ecran.jpg')}}" class="embed-responsive"  alt="Third Slide">
+
+{{--                            <div class="carousel-caption">--}}
+{{--                                <h2>Meilleur artiste du mois</h2>--}}
+{{--                                <h5>Je remercie tous mes fans</h5>--}}
+{{--                            </div>--}}
+
+                      </div>
+                </div>
 
                     <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
                         <span class="carousel-control-prev-icon"></span>
@@ -204,7 +205,7 @@
 
                     <!--Linkedin -->
                     <a class="li-ic">
-                        <a href="https://www.--Linkedin.com" target="_blank"><img src="{{asset('img/icon/linkedin.png')}}" height="30px" width="30px" frameborder="0"/></a>
+                        <a href="https://www.linkedin.com" target="_blank"><img src="{{asset('img/icon/linkedin.png')}}" height="30px" width="30px" frameborder="0"/></a>
                     </a>
 
                     <!--whatsapp-->

@@ -19,8 +19,6 @@ class CreateMouvesTable extends Migration
             $table->string('url_video');
             $table->boolean('is_youtube')->default(0);
 
-            $table->unsignedBigInteger('artiste_id')->nullable();
-            $table->foreign('artiste_id')->references('id')->on('artistes')->onDelete('cascade');
             $table->timestamps();
         });
     }

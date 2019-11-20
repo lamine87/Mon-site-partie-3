@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('img/icon/logo_black.png')}}">
+    <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}">
 
     <title>MM223.com</title>
 
@@ -15,7 +15,7 @@
     <!-- Custom styles for this template -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+    <script defer src="{{asset('css/bootstrap.min.css')}}" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
 </head>
 
@@ -24,7 +24,7 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
-            <div class="icon-accueil"><a href="#"><img src="{{asset('img/icon/logo-menu')}}"></a>
+            <div class="icon-accueil"><a href="#"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
             </div>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"

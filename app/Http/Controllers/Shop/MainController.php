@@ -9,7 +9,9 @@ use App\Tag;
 use App\Media_tag;
 use App\Mouve;
 use App\Tag_mouve;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class MainController extends Controller
@@ -17,36 +19,39 @@ class MainController extends Controller
     //
     public function index()
     {
-        $artistes = DB::table('artistes')
+        $user = User::all();
+
+        $mouve = DB::table('mouves')
             ->orderBy('created_at', 'desc')->paginate(20);
 
-        $tags = DB::table('tags')
-            ->orderBy('created_at', 'desc')->paginate(20);;
+        $tag = DB::table('tags')
+            ->orderBy('created_at', 'desc')->paginate(20);
 
-        return view('shop.home', ['artistes' => $artistes,'tags' => $tags]);
+        return view('shop.home', ['users'=>$user,'tags' => $tag,'mouves' => $mouve]);
 
     }
 
 
-    public function voirArtiste(Request $request)
+    public function artiste(Request $request)
     {
-        $artiste = Artiste::find($request->id);
-        $mouves = Mouve::find($request->id);
+        $mouve = Mouve::find($request->id);
 
         $artiste_recommandes = DB::table('artiste_recommandes')
             ->orderBy('created_at', 'desc')->paginate(12);
 
-        return view('shop.voir_artiste',['artiste' => $artiste,'artiste_recommandes' => $artiste_recommandes,'mouves' => $mouves]);
+        return view('shop.voir_artiste',['mouves'=>$mouve,'artiste_recommandes' => $artiste_recommandes]);
       }
+
 
 
     public function tag(Request $request)
     {
-        $media_tag = Media_tag::find($request->tag_id);
-        $media_tags = DB::table('media_tags')
-            ->orderBy('created_at', 'desc')->paginate(20);
+        $tag = Tag::find($request->id);
 
-        return view('shop.tag_artiste',['media_tags' => $media_tags,'media_tag'=>$media_tag]);
+        $media_tag = DB::table('media_tags')
+            ->orderBy('created_at', 'desc')->paginate(12);
+
+        return view('shop.tag_artiste',['tags'=>$tag,'media_tags'=>$media_tag]);
 
     }
 

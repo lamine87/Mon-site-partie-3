@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('img/icon/logo.png')}}">
+    <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}">
 
     <title>MM223.com</title>
 
@@ -24,7 +24,7 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
-            <div class="icon-accueil"><a href="#"><img src="{{asset('img/icon/logo-menu')}}"></a>
+            <div class="icon-accueil"><a href="#"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
             </div>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"

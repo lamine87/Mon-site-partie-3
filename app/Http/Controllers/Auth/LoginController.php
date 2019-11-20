@@ -40,24 +40,27 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+public function login(Request $request)
+{
+    $email = $request->email;
+    $password = $request->password;
 
-//    public function back(Request $request)
-//    {
-//        $email = $request->email;
-//        $password = $request->password;
-//
-//        if (Auth::attempt(['email' => $email, 'password' => $password])) {
-//            $user = Auth::user();
-//            //if ($user->hasRole('Acheteur')) {
-//
-//            return redirect()->route('afficheBackend');
-//            //   }
-////        } else {
-////            return redirect()->route('commande_identification')->with('notice', 'impossible de vous identifier');
-////        }
-//    }
+    if (Auth::attempt(['email' => $email, 'password' => $password])) {
+        $user = Auth::user();
 
 
+        if ($user->hasRole('Administrateur')) {
 
+            //Si le user est admin redirection vers le backend
+            return redirect()->route('shop_admin');
+        } else {
+            //Si le user n'est pas admin
+            return redirect()->route('home');
+        }
+
+    } else {
+        return redirect()->route('login')->with('message', 'impossible de vous identifier');
+    }
+   }
 
 }
