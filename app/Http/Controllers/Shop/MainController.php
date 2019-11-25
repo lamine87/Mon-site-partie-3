@@ -46,14 +46,12 @@ class MainController extends Controller
 
     public function tag(Request $request)
     {
-        $tag = Tag::find($request->id);
+        $tags = Tag::find($request->id);
 
-        $media_tag = DB::table('media_tags')
-            ->orderBy('created_at', 'desc')->paginate(12);
+        $media_tag = DB::table('media_tags')->where('tag_id', '=',$tags->id)->paginate(6);
 
-        return view('shop.tag_artiste',['tags'=>$tag,'media_tags'=>$media_tag]);
+        return view('shop.tag_artiste',['tags'=>$tags,'media_tags'=>$media_tag]);
 
     }
-
 
 }

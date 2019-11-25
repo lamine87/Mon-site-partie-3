@@ -21,9 +21,6 @@ class ArtisteController extends Controller
     {
         $mouve = Mouve::find($request->id);
 
-//        $mouve = DB::table('mouves')
-//            ->orderBy('created_at', 'desc')->paginate(20);
-
         return view('backend.index',['mouves'=>$mouve]);
     }
 
@@ -64,19 +61,29 @@ class ArtisteController extends Controller
             // Imprimer l'icon sur l'image
             $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
 
-            $img->save('storage/uploads/' . $fileName);
+            $img->save('storage/uploads/' .$fileName);
 
         }
 
-        $user->lien_facebook = $request->lien_facebook;
-        $user->lien_instagram = $request->lien_instagram;
-        $user->save();
+//         if($user = null);
 
-        $mouve = new Mouve();
-        $mouve->url_video = $request->url_video;
-        $mouve->description = $request->description;
-        $mouve->photo_principale = $fileName;
-        $mouve->user_id = $user->id;
+            $user->lien_facebook = $request->lien_facebook;
+            $user->lien_instagram = $request->lien_instagram;
+            $user->save();
+
+
+            $mouve = new Mouve();
+            $mouve->url_video = $request->url_video;
+            $mouve->description = $request->description;
+            $mouve->photo_principale = $fileName;
+            $mouve->user_id = $user->id;
+
+//        if ($request->is_online == 1) {
+//            $mouve->is_online = $request->is_online;
+//        } else {
+//            $mouve->is_online = false;
+//        }
+
         $mouve->save();
 
 //        if ($request->mouves) {
@@ -93,26 +100,26 @@ class ArtisteController extends Controller
 
 
 
-        return redirect()->route('home')->with('notice', 'Artiste <strong>' . $user->id . '</strong> a bien été ajouté');
+        return redirect()->route('home')->with('notice', 'Musique <strong>' . $user->id . '</strong> a bien été ajouté');
     }
 
      //  Modification de musique dejà enregistrer
     public function edit(Request $request)
     {
-        $user = User::find($request->id);
+        $user = Auth::user();
         $mouve = Mouve::find($request->id);
 
         return view('backend.edit', [
 
-            'artiste' => $user,
-            'user' => $mouve,
+            'user' => $user,
+            'mouve' => $mouve,
         ]);
     }
 
     // Validation de la modification
-    public function update(Request $request)
+    public function update(Request $request,  $uniqid)
     {
-        $user = User::find($request->id);
+        $user = Auth::user();
         $mouve = Mouve::find($request->id);
 
         $request->validate(
@@ -121,46 +128,45 @@ class ArtisteController extends Controller
                 'description' => 'required | max:200',
                 'lien_facebook' => 'required',
                 'lien_instagram' => 'required',
-                'photo_principale' => 'required|image|max:1999']
+//                'photo_principale' => 'required|image|max:1999'
+            ]
         );
 //        if ($request->hasFile('photo_principale')) {
 //
-//            //Recuperer le nom de l'image saisi par l'utilisateur
+//            // Recuperer le nom de l'image saisi par l'utilisateur
 //            $fileName = $request->file('photo_principale')->getClientOriginalName();
 //
 //            //Telechargement de l'image
-//            $request->file('photo_principale')->storeAs('public/uploads',$fileName);
+//            $request->file('photo_principale')->storeAs('public/uploads', $uniqid.$fileName);
 //
 //            $img = Image::make($request->file('photo_principale')->getRealPath());
 //
 //            //Dimensionner l'image
+//
 //            $img->resize(400, 400);
 //
 //            // Imprimer l'icon sur l'image
 //            $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
 //
-//            $img->save('storage/uploads/' .$fileName);
+//            $img->save('storage/uploads/' . $fileName);
 //
 //        }
 
-        $user->id = $request->id;
-        $user->description = $request->description;
         $user->lien_facebook = $request->lien_facebook;
         $user->lien_instagram = $request->lien_instagram;
-//        $user->photo_principale = $fileName;
         $user->save();
 
 
-        $mouve->id = $request->id;
         $mouve->url_video = $request->url_video;
         $mouve->description = $request->description;
+//        $mouve->photo_principale = $fileName;
         $mouve->save();
-        return redirect()->route('home')->with('notice', 'Artiste <strong>' . $user->id . '</strong> a bien été Modifier');
+
+        return redirect()->route('home')->with('notice', 'Musique <strong>' . $user->id . '</strong> a bien été Modifier');
     }
 
     public function delete(Request $request)
     {
-
         $mouve = Mouve::find($request->id);
         $mouve->delete();
         return redirect()->route('home')->with('notice', 'Artiste <strong>' . $mouve->id . '</strong> a été supprimé');

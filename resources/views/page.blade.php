@@ -41,7 +41,7 @@
                     <a class="nav-link " href="#">Actualité <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="nav-link" href="#">Collection</a>
+                    <a class="nav-link" href="#">Variété</a>
                 </li>
                 <li class="nav-item active">
                     <a href="#" target="_self" class="nav-link " href="#">Contact</a>

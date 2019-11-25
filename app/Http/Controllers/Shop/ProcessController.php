@@ -43,7 +43,6 @@ class ProcessController extends Controller
     {
         $user = Auth::user();
 
-
         $request->validate(
             [
                 'url_video' => 'required',
@@ -69,7 +68,6 @@ class ProcessController extends Controller
             $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
 
             $img->save('storage/uploads/' . $fileName);
-
         }
 
 
