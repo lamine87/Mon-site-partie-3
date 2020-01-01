@@ -32,12 +32,12 @@
 
             </div>
             <br>
-            @foreach($tags as $tag)
-                <a href="{{route('voir_tag',['id'=>$tag->id])}}" type="button" class="btn btn-primary">{{$tag->nom}}</a>
+            @foreach($users as $user)
+                <a href="{{route('voir_tag',['id'=>$user->id])}}" type="button" class="btn btn-primary">{{$user->name}}</a>
             @endforeach
            <br><br> <br>
             <div class="col-12 text-center">
-                {{$mouves->links()}}
+{{--                {{$mouves->links()}}--}}
             </div>
         </div>
     </div>

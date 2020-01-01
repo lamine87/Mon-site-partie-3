@@ -9,7 +9,7 @@
 
                 </div>
 
-                <form action="{{route('backend_admin_update',['id'=>$artiste_recommande->id])}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('backend_admin_update',['id'=>$mouve->id])}}" method="POST" enctype="multipart/form-data">
 
                     @csrf
                     @if($errors->any())
@@ -17,41 +17,39 @@
                             @foreach($errors->all() as $error)
                                 <p>{{$error}}</p>
                             @endforeach
+
                         </div>
                     @endif
                     <div class="form-row">
-                        <div class="form-group col-md-4">
-                            <label for="nom">Nom</label>
-                            <input type="text" class="form-control" id="nom" name="nom" value="{{$artiste_recommande->nom}}">
-                        </div>
-                        <div class="form-group col-md-4">
+
+                        <div class="form-group col-md-8">
                             <label for="url_video">Url Vidéo</label>
-                            <input type="text" class="form-control" id="url_video" name="url video" value="{{$media_recommande->url_video}}">
+                            <input type="text" class="form-control" id="url_video" name="url video" value="{{$mouve->url_video}}">
                         </div>
 
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-8">
                             <label for="description">Description</label>
-                            <textarea type="text" class="form-control" name="description" id="description">{{$artiste_recommande->description}}</textarea>
+                            <textarea type="text" class="form-control" name="description" id="description">{{$mouve->description}}</textarea>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="nom">Lien Facebook</label>
-                            <input type="text" class="form-control" id="lien_facebook" name="lien facebook" value="{{$artiste_recommande->lien_facebook}}">
+                            <input type="text" class="form-control" id="lien_facebook" name="lien facebook" value="{{$user->lien_facebook}}">
                         </div>
                         <div class="form-group col-md-4">
                             <label for="prix_ht">Lien Instagram</label>
-                            <input type="text" class="form-control" id="lien_instagram" name="lien instagram" value="{{$artiste_recommande->lien_instagram}}">
+                            <input type="text" class="form-control" id="lien_instagram" name="lien instagram" value="{{$user->lien_instagram}}">
                         </div>
-                     </div>
+                    </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label for="photo_principale">Photo</label>
                             <input type="file" class="form-control-file" id="photo_principale" name="photo_principale">
-                            <img style="border: 4px solid #5b64f1" src="{{asset('storage/uploads/'.$artiste_recommande->photo_principale)}}" width="50" class="img-thumbnail" alt="">
+                            <img style="border: 4px solid #5b64f1" src="{{asset('storage/uploads/'.$mouve->photo_principale)}}" width="50" class="img-thumbnail" alt="">
                         </div>
                     </div>
 
@@ -60,4 +58,4 @@
             </main>
         </div>
     </div>
-    @endsection
+@endsection

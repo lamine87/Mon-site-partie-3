@@ -34,8 +34,12 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
+        'name', 'email', 'password', 'bannir_user'
     ];
+    protected $dates = [
+        'bannir_user'
+    ];
+
 
     public function roles()
     {
@@ -49,6 +53,7 @@ class User extends Authenticatable
         }
         return false;
     }
+
 
     public function mouves(){
         return $this->hasMany('App\Mouve');

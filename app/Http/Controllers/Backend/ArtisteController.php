@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Backend;
 
-use App\Artiste;
+
 use App\Artiste_recommande;
+use App\Commentaire;
 use App\Http\Controllers\Controller;
-use App\Media_recommande;
 use App\Mouve;
 use App\User;
 use Intervention\Image\ImageManagerStatic as Image;
@@ -19,10 +19,13 @@ class ArtisteController extends Controller
     // Affichage de l'espace ajouter musique pour user
     public function index(Request $request)
     {
-        $mouve = Mouve::find($request->id);
+        $user = Auth::user();
+        $mouve = DB::table('mouves')
+            ->orderBy('created_at', 'asc')->paginate(6);
 
-        return view('backend.index',['mouves'=>$mouve]);
+        return view('backend.index',['users'=>$user,'mouves'=>$mouve]);
     }
+
 
     // Affichage de la page d'aide a utilisation
     public function aide()
@@ -35,7 +38,6 @@ class ArtisteController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-
         $request->validate(
             [
                 'url_video' => 'required',
@@ -65,8 +67,6 @@ class ArtisteController extends Controller
 
         }
 
-//         if($user = null);
-
             $user->lien_facebook = $request->lien_facebook;
             $user->lien_instagram = $request->lien_instagram;
             $user->save();
@@ -84,7 +84,7 @@ class ArtisteController extends Controller
 //            $mouve->is_online = false;
 //        }
 
-        $mouve->save();
+            $mouve->save();
 
 //        if ($request->mouves) {
 //            foreach ($request->mouves as $id) {
@@ -99,8 +99,7 @@ class ArtisteController extends Controller
 //        }
 
 
-
-        return redirect()->route('home')->with('notice', 'Musique <strong>' . $user->id . '</strong> a bien été ajouté');
+        return redirect()->route('home')->with('notice', 'La Musique à bien été ajouté');
     }
 
      //  Modification de musique dejà enregistrer
@@ -162,14 +161,17 @@ class ArtisteController extends Controller
 //        $mouve->photo_principale = $fileName;
         $mouve->save();
 
-        return redirect()->route('home')->with('notice', 'Musique <strong>' . $user->id . '</strong> a bien été Modifier');
+        return redirect()->route('home')->with('notice', 'Musique <strong>' .$user->nom. '</strong> a bien été Modifier');
     }
 
     public function delete(Request $request)
     {
         $mouve = Mouve::find($request->id);
         $mouve->delete();
-        return redirect()->route('home')->with('notice', 'Artiste <strong>' . $mouve->id . '</strong> a été supprimé');
+        return redirect()->route('home')->with('notice', 'Artiste <strong>' .$mouve->id. '</strong> a été supprimé');
 
     }
+
+
 }
+

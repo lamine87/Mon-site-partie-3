@@ -31,6 +31,8 @@
                             <textarea type="text" class="form-control" name="description" id="description">{{old('description')}}</textarea>
                         </div>
                     </div>
+
+
                     <div class="form-row">
                         <div class="form-group col-md-4">
                             <label for="nom">Lien Facebook</label>

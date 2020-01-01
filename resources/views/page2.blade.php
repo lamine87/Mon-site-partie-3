@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -8,19 +8,15 @@
     <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}">
 
     <title>MM223.com</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <script defer src="{{asset('css/bootstrap.min.css')}}" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
 </head>
 
 <!--Navbar-->
-
+<body>
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
@@ -46,6 +42,23 @@
                 <li class="nav-item active">
                     <a href="#" target="_self" class="nav-link " href="#">Contact</a>
                 </li>
+
+
+                <li class="nav-item active">
+                    <div class="dropdown">
+                        <div id="variete" data-toggle="dropdown">Variété</div>
+                        <div class="dropdown-menu">
+{{--                            @foreach($categories as $categorie)--}}
+{{--                                <div class="dropdown-item">--}}
+{{--                                    <a href="{{route('voir_categorie',['id'=>$categorie->id])}}">--}}
+{{--                                        {{$categorie->nom}}--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
+                        </div>
+                    </div>
+                </li>
+
                 <li class="nav-item active">
                     <a href="{{route('home')}}" target="_self" class="nav-link " href="#">Se connecter</a>
                 </li>
@@ -179,11 +192,13 @@
 </footer>
 <!-- Footer -->
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+{{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
 
-</body>
+<script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/holder.min.js')}}"></script>
-
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/like.js')}}"></script>
+</body>
 </html>

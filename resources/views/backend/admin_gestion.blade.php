@@ -6,23 +6,20 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
                     <h1 class="h1">INSERER MUSIQUES</h1>
 
-                    <a href="" class="btn btn-sm btn-warning" >
-                    <h5 style="text-align: right">Liste des utilisateurs</h5>
-                    </a>
+{{--                    <a href="" class="btn btn-sm btn-warning" >--}}
+{{--                    <h5 style="text-align: right">Liste des utilisateurs</h5>--}}
+{{--                    </a>--}}
                 </div>
 
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h4>Page Accueil</h4>
 
-                    <a href="" class="btn btn-sm btn-warning" >
-                    <h5 style="text-align: center">Inserer Tag</h5>
-                     </a>
 
                     <div class="btn-toolbar mb-2 mb-md-0 pull-right">
                         <span data-feather="calendar"></span>
-                        <a href="{{route('admin_ajout')}}" class="btn btn-sm btn-primary">
-                            Nouveau
+                        <a href="{{route('user_liste')}}" class="btn btn-sm btn-primary">
+                            Liste des utilisateurs
                         </a>
                     </div>
                 </div>
@@ -112,3 +109,21 @@
     </div>
 </div>
 @endsection
+
+{{--<td>--}}
+{{--    @if($categorie->is_online)--}}
+{{--        <span class="badge badge-success">oui</span>--}}
+{{--    @else--}}
+{{--        <span class="badge badge-danger">non</span>--}}
+{{--    @endif--}}
+{{--</td>--}}
+
+
+{{--<div class="form-group form-check">--}}
+{{--    @if($categorie->is_online)--}}
+{{--        <input type="checkbox" class="form-check-input" id="is_online" checked name="is_online" value="1">--}}
+{{--    @else--}}
+{{--        <input type="checkbox" class="form-check-input" id="is_online" name="is_online" value="1">--}}
+{{--    @endif--}}
+{{--    <label for="is_online">Cocher la case si la catégorie est online</label>--}}
+{{--</div>--}}

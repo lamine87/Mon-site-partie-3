@@ -162,6 +162,9 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
+        Madcoda\Youtube\YoutubeServiceProviderLaravel5::class,
+        DevDojo\Chatter\ChatterServiceProvider::class,
+
 
         /*
          * Package Service Providers...
@@ -228,7 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
 
-
+        'Youtube'   => Madcoda\Youtube\Facades\Youtube::class,
     ],
 
 ];

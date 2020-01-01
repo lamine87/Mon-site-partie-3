@@ -174,5 +174,6 @@
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/holder.min.js')}}"></script>
+<script src="{{asset('js/jquery.js')}}"></script>
 
 </html>

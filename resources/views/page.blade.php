@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,18 +9,15 @@
 
     <title>MM223.com</title>
 
-    <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-
     <!-- Custom styles for this template -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <script defer src="{{asset('css/bootstrap.min.css')}}" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
 </head>
 
 <!--Navbar-->
-
+<body>
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
@@ -30,7 +27,6 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-
         </button>
 
         <!-- link/liens de la navbar-->
@@ -40,21 +36,52 @@
                 <li class="nav-item active">
                     <a class="nav-link " href="#">Actualité <span class="sr-only"></span></a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Variété</a>
-                </li>
+
+
                 <li class="nav-item active">
                     <a href="#" target="_self" class="nav-link " href="#">Contact</a>
                 </li>
+
+                <li class="nav-item active">
+                    <div class="dropdown">
+                        <div id="variete" data-toggle="dropdown">Variété</div>
+
+                        <div class="dropdown-menu">
+{{--                            @foreach($mouve->categories as $categorie)--}}
+{{--                               <div class="dropdown-item">--}}
+{{--                                  <a href="{{route('voir_categorie',['id'=>$categorie->id])}}">--}}
+{{--                                       {{$categorie->nom}}--}}
+{{--                                    </a>--}}
+{{--                                </div>--}}
+{{--                            @endforeach--}}
+                        </div>
+
+                    </div>
+                </li>
+                <li class="nav-item active">
+                    <div class="dropdown">
+                        <div id="variete" data-toggle="dropdown">Pays</div>
+                        <div class="dropdown-menu">
+
+                                <div class="dropdown-item">
+                                    <a href="#">
+
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+                </li>
+
                 <li class="nav-item active">
                     <a href="{{route('home')}}" target="_self" class="nav-link " >Se connecter</a>
                 </li>
 
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search">
+            <form  action="{{route('search') }}" class="form-inline mt-2 mt-md-0">
+                <input value="{{request()->input('query')}}" class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search" name="query" id="query">
                 <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
             </form>
+
         </div>
 
     </nav>
@@ -119,7 +146,7 @@
 <!-- Footer -->
 
 <div class="plus-haut">
-    <a href="#top" title="Haut de page" class="scrollup " >
+    <a href="#top" title="Haut de page" class="scrollup" >
         <img src="{{asset('img/icon/icon_top.png')}}" alt="Monter en haut de page"/>
     </a>
 </div>
@@ -238,11 +265,13 @@
 </footer>
 <!-- Footer -->
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+{{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
 
-</body>
+<script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/holder.min.js')}}"></script>
-
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/like.js')}}"></script>
+</body>
 </html>

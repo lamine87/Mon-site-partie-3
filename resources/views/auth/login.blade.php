@@ -17,6 +17,14 @@
              </div>
 
                 <div class="card-body">
+
+                      {{--          Message pour bannir un user--}}
+
+                        @if (session('message'))
+                            <div class="alert alert-danger">{{ session('message') }}</div>
+                        @endif
+
+
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
 
