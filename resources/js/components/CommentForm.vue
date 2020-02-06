@@ -47,13 +47,15 @@
            submitComment() {
                axios.post('/comments', {
                    content: this.comment
+
                })
+               console.log(this.comment)
+
                    .then(function (response) {
                    console.log(response);
                }).catch(function (error) {
                        console.log(error);
                    });
-                   // console.log(this.comment)
            },
        },
     }

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMouvesTable extends Migration
+class CreateActualitesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,11 @@ class CreateMouvesTable extends Migration
      */
     public function up()
     {
-        Schema::create('mouves', function (Blueprint $table) {
+        Schema::create('actualites', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('description')->nullable();
-            $table->string('url_video');
+            $table->string('url_video')->nullable();
             $table->string('photo_principale');
-            $table->boolean('is_online')->default(0);
-
             $table->timestamps();
         });
     }
@@ -31,6 +29,6 @@ class CreateMouvesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('mouves');
+        Schema::dropIfExists('actualites');
     }
 }

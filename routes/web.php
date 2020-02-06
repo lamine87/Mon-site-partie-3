@@ -22,26 +22,27 @@ Route::get('/tag/{id}','Shop\MainController@tag')->name('voir_tag');
                    // Voir titre de l'artiste
 Route::get('/titre{id}','Shop\MainController@titre')->name('voir_titre');
 
+Route::get('/voir/pays/{id}','Shop\MainController@nation')->name('voirPays');
         // afficher les categories
 //Route::get('/variete/{id}','Shop\MainController@category')->name('categorie_music');
 
          // voir categorie liée aux mouves
 Route::get('/voir/categorie/{id}','Shop\MainController@voirCategorie')->name('voir_categorie');
 
-
                // Enregistrement des commentaires
 //Route::post('/shop/store{id}','Shop\ProcessController@store')->name('comment_store');
 
+Route::get('/actualite','Backend\ArtisteController@actu')->name('afficheActu');
+
+Route::get('/voir/actualite/{id}','Backend\ArtisteController@videoActu')->name('voirActu');
 
 
-Route::post('/comments','Shop\ProcessController@store');
-
+Route::post('/comments/{id}','Shop\ProcessController@store');
 
                /* Moteur de recherche */
 //Route::get('/search', ['users' => 'MainController@recherche', 'as' => 'search']);
 
-Route::get('/search','Shop\MainController@recherche')->name('search');
-
+Route::post('/search','Shop\MainController@recherche')->name('musicRecherche');
 
 Auth::routes(['verify' => true]);
                //S'identifier
@@ -49,7 +50,6 @@ Route::get('/backend', 'HomeController@index')->name('home');
 
            // Affichage de la page creer un compte
 Route::get('/regi', 'Shop\ProcessController@enregistrer')->name('enregistrer_user');
-
 
               //Affichage de la page index.blade
 Route::get('/music/', 'Backend\ArtisteController@index')->name('ajoutMusic');

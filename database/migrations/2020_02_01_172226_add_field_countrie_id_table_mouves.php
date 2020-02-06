@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddFieldCountrieIdTableMouves extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::table('mouves', function (Blueprint $table) {
+            //
+            $table->unsignedBigInteger('countrie_id')->nullable();
+            $table->foreign('countrie_id')->references('id')->on('countries')->onDelete('set null');
+            Schema::enableForeignKeyConstraints();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::table('mouves', function (Blueprint $table) {
+            //
+        });
+    }
+}

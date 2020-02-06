@@ -9,7 +9,6 @@
                                 frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
                     </div>
-
                 <br>
         <div class="row">
             <div class="col-sm-4 col-md-2 col-lg-2 ">
@@ -71,7 +70,6 @@
 {{--                        </div>--}}
 
 
-
 {{--                    <div class="form-group col-md-6">--}}
 {{--                        <label for="nom">Nom</label>--}}
 {{--                        <input type="text" class="form-control" id="nom" name="nom" value="{{old('nom')}}" placeholder="Jean">--}}
@@ -95,6 +93,7 @@
 
 {{--              </form>--}}
 {{--            </div>--}}
+
 
              <div id="app">
 

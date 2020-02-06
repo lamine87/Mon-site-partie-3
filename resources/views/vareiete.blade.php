@@ -5,19 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-    <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}">
-
+    <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}" >
     <title>MM223.com</title>
-
-    <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
-    <!-- Custom styles for this template -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
+
 </head>
 
 <!--Navbar-->
-<body id="bakimg">
+<body>
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
@@ -27,51 +24,132 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
-
         </button>
-
         <!-- link/liens de la navbar-->
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-
                 <li class="nav-item active">
-                    <a href="{{route('shop_home')}}" target="_self" class="nav-link " >Accueil</a>
+                    <a class="nav-link " href="{{route('afficheActu')}}">Actualité <span class="sr-only"></span></a>
                 </li>
 
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="variete">
+                        Pays
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @foreach($countries as $countrie)
+                            <a class="dropdown-item" href="{{route('voirPays',['id'=>$countrie->id])}}">
+                                {{$countrie->nom}}
+                                <img src="{{asset('img/icon/'.$countrie->image_drapeau)}}" >
 
+                            </a>
+                        @endforeach
+                    </div>
+                </li>
 
+                <li class="nav-item active">
+                    <a href="{{route('home')}}" target="_self" class="nav-link " >Se connecter</a>
+                </li>
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
+
+                <form  action="{{route('musicRecherche') }}" class="form-inline mt-2 mt-md-0" method="POST">
+                @csrf
+                <input value="{{request()->input('query')}}" class="form-control mr-sm-1" type="text" placeholder="Recherche" aria-label="Search" name="search">
+                <button class="btn btn-outline-primary my-1 my-sm-0" type="submit">Rechercher</button>
             </form>
+
         </div>
 
     </nav>
+
 </header>
 <!--fin de navbar-->
-<br><br><br><br><br><br><br>
-<div class="">
-@yield('content')
-</div>
-<br><br><br><br><br>
+<p id="top"> </p>
 
+<!--Carousel Animation-->
+<div class=" container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="bs-exemple">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#myCarousel" data-slide-to="1"></li>
+                        <li data-target="#myCarousel" data-slide-to="2"></li>
+                    </ol>
+
+
+                    <div class="carousel-inner">
+                          <div class="carousel-item active">
+                            <img src="{{asset('images/maitre-gims-dadju.jpg')}}" alt="First Slide" class="carousel-image">
+{{--                            <div class="carousel-caption">--}}
+{{--                                <h2>Meilleur artiste du mois</h2>--}}
+{{--                                <h5>Je remercie tous mes fans</h5>--}}
+{{--                            </div>--}}
+                          </div>
+                        <div class="carousel-item" class="carousel-image">
+                            <img src="{{asset('images/booba-font-ecran.jpg')}}"  alt="Second Slide" class="carousel-image">
+{{--                            <div class="carousel-caption">--}}
+{{--                                <h2>Meilleur artiste du mois</h2>--}}
+{{--                                <h5>Je remercie tous mes fans</h5>--}}
+{{--                            </div>--}}
+                          </div>
+                        <div class="carousel-item ">
+                            <img src="{{asset('images/mhd-font-ecran.jpg')}}"  alt="Mali Musique" class="carousel-image">
+
+{{--                            <div class="carousel-caption">--}}
+{{--                                <h2>Meilleur artiste du mois</h2>--}}
+{{--                                <h5>Je remercie tous mes fans</h5>--}}
+{{--                            </div>--}}
+
+                      </div>
+                </div>
+
+                    <a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Fin de Carousel Animation-->
+
+
+
+
+@yield('content')
+
+
+
+<!-- Footer -->
+
+<div class="plus-haut">
+    <a href="#top" title="Haut de page" class="scrollup" >
+        <img src="{{asset('img/icon/icon_top.png')}}" alt="Monter en haut de page"/>
+    </a>
+</div>
 
 
 <br>
-
-<!--Footer-->
 <footer class="page-footer font-small indigo">
 
     <div class="container">
+
         <div class="row text-center d-flex justify-content-center pt-5 mb-3">
 
             <div class="col-md-2 mb-3">
+
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="#!">Service</a>
+                    <a href="#">Service</a>
                 </h6>
+
             </div>
+
 
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
@@ -115,11 +193,14 @@
         </div>
         <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
 
+        <!-- Grid row-->
         <div class="row pb-3">
 
+            <!-- Grid column -->
             <div class="col-md-12">
 
                 <div class="mb-5 flex-center">
+
                     <!-- Facebook -->
                     <a class="facebook">
                         <a href="https://fr-fr.facebook.com/" target="_blank"><img src="{{asset('img/icon/facebook.png')}}" height="37px" width="37px" frameborder="0"/></a>
@@ -136,7 +217,7 @@
 
                     <!--Linkedin -->
                     <a class="li-ic">
-                        <a href="https://www.--Linkedin.com" target="_blank"><img src="{{asset('img/icon/linkedin.png')}}" height="30px" width="30px" frameborder="0"/></a>
+                        <a href="https://www.linkedin.com" target="_blank"><img src="{{asset('img/icon/linkedin.png')}}" height="30px" width="30px" frameborder="0"/></a>
                     </a>
 
                     <!--whatsapp-->
@@ -156,6 +237,7 @@
                     </a>
                 </div>
             </div>
+
         </div>
     </div>
 
@@ -175,5 +257,6 @@
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/holder.min.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/like.js')}}"></script>
 </body>
 </html>

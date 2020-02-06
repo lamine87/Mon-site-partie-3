@@ -18,20 +18,20 @@
                         <a href="{{route('voir_artiste',['id'=>$mouve->id])}}" target="_self">
                             <img src="{{asset('storage/uploads/'.$mouve->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
                             <div class="text-center">
-                                @foreach($users as $user)
-                                    @if($user->id == $mouve->user_id)
-                                        <strong>{{$user->name}}</strong>
-                                    @endif
-                                @endforeach
+{{--                                @foreach($users as $user)--}}
+{{--                                    @if($user->id == $mouve->user_id)--}}
+{{--                                        <strong>{{$user->name}}</strong>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
 
                                 <p class="card-text">{{$mouve->description}}</p>
 
-                                @foreach($users as $user)
-                                    @if($user->id == $mouve->user_id)
-                                        <a href="{{asset($user->lien_facebook)}}" type="" title="Facebook" class="" target="_blank"><img src="{{asset('img/icon/facebook-c32.png')}}"></a>
-                                        <a href="{{asset($user->lien_instagram)}}" type=""  title="Instagram" class="" target="_blank"><img src="{{asset('img/icon/insta-c32.png')}}"></a>
-                                    @endif
-                                @endforeach
+{{--                                @foreach($users as $user)--}}
+{{--                                    @if($user->id == $mouve->user_id)--}}
+{{--                                        <a href="{{asset($user->lien_facebook)}}" type="" title="Facebook" class="" target="_blank"><img src="{{asset('img/icon/facebook-c32.png')}}"></a>--}}
+{{--                                        <a href="{{asset($user->lien_instagram)}}" type=""  title="Instagram" class="" target="_blank"><img src="{{asset('img/icon/insta-c32.png')}}"></a>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
                                 <br><br><br>
                             </div>
 

@@ -27,6 +27,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
     public function index()
     {
 
@@ -34,14 +35,12 @@ class HomeController extends Controller
             flash("Vous devez être connecté pour voir cette page.")->error();
             return redirect('login');
         }
-
         $users = Auth::user();
         $user = User::all();
 
-        $mouve = DB::table('mouves')->where('user_id', '=',$users->id)->paginate(6);
+        $mouve = DB::table('mouves')->where('user_id', '=',$users->id)->orderBy('created_at', 'desc')->paginate(6);
 
         return view('backend.artiste',['users' => $user,'mouves' => $mouve]);
-
 
     }
 

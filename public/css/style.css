@@ -5,10 +5,17 @@ footer{
 .bg-dark{
     background-color:  #0a0a0a !important;
     margin-top: 0;
-    padding: 6px;
+    padding: 10px;
     font-size: 1.5em;
 }
 
+#videActu{
+    margin-top: 50px;
+
+}
+#actu{
+    margin-top: 70px;
+}
 
 #pet-select:hover {
     color: blue;
@@ -19,14 +26,9 @@ footer{
     display: contents;
 }
 
-
 .dropdown{
     margin-left:  12px;
     margin-right: 5px;
-}
-
-#variete:hover{
-    color: blue;
 }
 
 .dropdown-item:hover{
@@ -34,24 +36,20 @@ footer{
 }
 
 .dropdown-menu{
-
     color: blue;
     font-size: 15px;
-    background-color: black;
-
+    background-color: #4e555b;
 }
 
-.dropdown-item a{
-    /*color: black;*/
+.dropdown-item {
     text-decoration: none;
     color: white;
-
+    max-width: max-content;
 }
 
 #navbarCollapse a{
    font-size: 15px;
    margin-left: 5px;
-
 }
 #navbarCollapse a:hover {
     color: blue;
@@ -59,16 +57,21 @@ footer{
 
 .carousel{
     margin-top: 40px;
+
 }
 .carousel-item{
     text-align: center;
+}
+
+.carousel-image{
     width: 100%;
-    height:400px;
+    height: max-content;
 }
 
 #piste{
     margin-top: 50px;
 }
+
 .voir{
     margin-top: 50px;
 }
@@ -107,23 +110,22 @@ h5{
 /* Annimation image (Pub) */
 
 #conteneur1{
-
     /*box-shadow: 0 15px 10px -5px #777;*/
-
 }
+
 .d1{
     margin-top: 50px;
     animation: defilement1 10s linear infinite;
 }
 
-@keyframes defilement1{
-    0%{transform: translate(0,0);}
-    100%{transform: translate(-288px,0);}
-}
+/*@keyframes defilement1{*/
+/*    0%{transform: translate(0,0);}*/
+/*    100%{transform: translate(-288px,0);}*/
+/*}*/
 
-.d1:hover{
-    animation-play-state: paused;
-}
+/*.d1:hover{*/
+/*    animation-play-state: paused;*/
+/*}*/
 /* FIN annimation image (Pub) */
 
 #comment{
@@ -138,4 +140,39 @@ h5{
 }
 #box{
    float: right;
+}
+#bakimg{
+    background-image: url("../images/mic-p.jpg");
+
+}
+#style-log{
+
+    background-color: #FFFFFF80;
+
+}
+.col-form-label{
+    font-size: 15px;
+    color: #000106;
+    font-weight: bolder;
+}
+.card-header{
+    font-weight: bolder;
+    color: #010106;
+    font-size: 20px;
+}
+.style-register{
+    color: #0a0a0a;
+    font-weight: bolder;
+    font-size: 20px;
+}
+#style-text{
+    color: #000106;
+    font-weight: bolder;
+    font-size: 15px;
+}
+#style-admin{
+    font-weight: bolder;
+    font-size: 16px;
+    background-color: #43e6ff;
+    color: black;
 }

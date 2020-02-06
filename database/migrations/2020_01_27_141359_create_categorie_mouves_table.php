@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCategorieMouveTable extends Migration
+class CreateCategorieMouvesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateCategorieMouveTable extends Migration
      */
     public function up()
     {
-        Schema::create('categorie_mouve', function (Blueprint $table) {
+        Schema::create('categorie_mouves', function (Blueprint $table) {
             $table->unsignedBigInteger('categorie_id')->nullable();
             $table->foreign('categorie_id')->references('id')->on('categories')->onDelete('cascade');
 
@@ -32,6 +32,6 @@ class CreateCategorieMouveTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('categorie_mouve');
+        Schema::dropIfExists('categorie_mouves');
     }
 }

@@ -1,4 +1,4 @@
-@extends('page_tag')
+@extends('page')
 @section('content')
     <div class="album py-5 bg-light" xmlns="http://www.w3.org/1999/html">
         <div class="container">

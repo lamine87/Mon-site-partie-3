@@ -1885,7 +1885,12 @@ __webpack_require__.r(__webpack_exports__);
     submitComment: function submitComment() {
       axios.post('/comments', {
         content: this.comment
-      }); // console.log(this.comment)
+      });
+      console.log(this.comment); //     .then(function (response) {
+      //     console.log(response);
+      // }).catch(function (error) {
+      //         console.log(error);
+      //     });
     }
   }
 });
@@ -37284,45 +37289,47 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "form",
-    {
-      staticClass: "flex flex-col",
-      attrs: { method: "post" },
-      on: {
-        submit: function($event) {
-          $event.preventDefault()
-          return _vm.submitComment($event)
-        }
-      }
-    },
-    [
-      _c("div", { staticClass: "form-group col-md-12" }, [
-        _c("textarea", {
-          directives: [
-            {
-              name: "model",
-              rawName: "v-model",
-              value: _vm.comment,
-              expression: "comment"
-            }
-          ],
-          staticClass: "border rounded p-3",
-          domProps: { value: _vm.comment },
-          on: {
-            input: function($event) {
-              if ($event.target.composing) {
-                return
-              }
-              _vm.comment = $event.target.value
-            }
+  return _c("div", { staticClass: "col-md-4 col-sm-12 col-lg-4" }, [
+    _c(
+      "form",
+      {
+        staticClass: "flex flex-col",
+        attrs: { method: "POST" },
+        on: {
+          submit: function($event) {
+            $event.preventDefault()
+            return _vm.submitComment($event)
           }
-        })
-      ]),
-      _vm._v(" "),
-      _vm._m(0)
-    ]
-  )
+        }
+      },
+      [
+        _c("div", { staticClass: "form-group col-md-12" }, [
+          _c("textarea", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.comment,
+                expression: "comment"
+              }
+            ],
+            staticClass: "border rounded p-3",
+            domProps: { value: _vm.comment },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.comment = $event.target.value
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
+        _vm._m(0)
+      ]
+    )
+  ])
 }
 var staticRenderFns = [
   function() {

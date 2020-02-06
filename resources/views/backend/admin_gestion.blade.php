@@ -4,30 +4,24 @@
         <div class="row">
             <div class="col-12 text-center ">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom ">
-                    <h1 class="h1">INSERER MUSIQUES</h1>
+                    <h1 class="h1">Espace Administrateur</h1>
 
-{{--                    <a href="" class="btn btn-sm btn-warning" >--}}
-{{--                    <h5 style="text-align: right">Liste des utilisateurs</h5>--}}
-{{--                    </a>--}}
                 </div>
-
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h4>Page Accueil</h4>
 
-
                     <div class="btn-toolbar mb-2 mb-md-0 pull-right">
                         <span data-feather="calendar"></span>
-                        <a href="{{route('user_liste')}}" class="btn btn-sm btn-primary">
+                        <a href="{{route('user_liste')}}" class="btn btn-sm btn-primary" id="style-admin">
                             Liste des utilisateurs
                         </a>
                     </div>
                 </div>
 
-
                 <div class="table-responsive">
                     <table class="table table-sm">
-                        <thead class="table-danger">
+                        <thead class="table-primary" id="style-admin">
                         <tr>
                             <th>Numero</th>
                             <th>Nom</th>
@@ -82,7 +76,7 @@
     <div class="col-12 text-center ">
      <div class="table-responsive">
         <table class="table table-sm">
-            <thead class="table-danger">
+            <thead class="table-primary" id="style-admin">
             <tr>
                 <th>Numero</th>
                 <th>Description</th>

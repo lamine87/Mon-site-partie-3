@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Backend;
 
 
+use App\Actualite;
 use App\Artiste_recommande;
+use App\Categorie;
 use App\Commentaire;
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Mouve;
 use App\User;
@@ -16,12 +19,12 @@ use Illuminate\Support\Facades\DB;
 
 class ArtisteController extends Controller
 {
-    // Affichage de l'espace ajouter musique pour user
+    // Affichage de l'espace pour user
     public function index(Request $request)
     {
         $user = Auth::user();
         $mouve = DB::table('mouves')
-            ->orderBy('created_at', 'asc')->paginate(6);
+            ->orderBy('created_at', 'desc')->paginate(6);
 
         return view('backend.index',['users'=>$user,'mouves'=>$mouve]);
     }
@@ -34,7 +37,7 @@ class ArtisteController extends Controller
     }
 
 
-    // Enregistrement de musique dans la base de données
+    // Enregistrer la musique dans la base de données
     public function store(Request $request)
     {
         $user = Auth::user();
@@ -77,15 +80,12 @@ class ArtisteController extends Controller
             $mouve->description = $request->description;
             $mouve->photo_principale = $fileName;
             $mouve->user_id = $user->id;
-
 //        if ($request->is_online == 1) {
 //            $mouve->is_online = $request->is_online;
 //        } else {
 //            $mouve->is_online = false;
 //        }
-
             $mouve->save();
-
 //        if ($request->mouves) {
 //            foreach ($request->mouves as $id) {
 //                $mouve->user()->attach($id);
@@ -97,8 +97,6 @@ class ArtisteController extends Controller
 //                $user->mouve()->attach($id);
 //            }
 //        }
-
-
         return redirect()->route('home')->with('notice', 'La Musique à bien été ajouté');
     }
 
@@ -168,9 +166,25 @@ class ArtisteController extends Controller
     {
         $mouve = Mouve::find($request->id);
         $mouve->delete();
-        return redirect()->route('home')->with('notice', 'Artiste <strong>' .$mouve->id. '</strong> a été supprimé');
+        return redirect()->route('home')->with('notice', 'Artiste <strong>' .$mouve->nom. '</strong> a été supprimé');
 
     }
+    // Affichage de la page actualité
+    public function actu(){
+        $categorie = Categorie::all();
+        $countrie = Country::all();
+        $actualite = DB::table('actualites')
+            ->orderBy('created_at', 'desc')->paginate(6);
+        return view('shop.actualite',['actualites'=>$actualite,'countries'=>$countrie,'categories'=>$categorie]);
+    }
+       // Affichage des vidéos de la page actualité
+    public function videoActu(Request $request){
+        $countrie = Country::all();
+        $categorie = Categorie::all();
+        $actualite = Actualite::find($request->id);
+        return view('shop.voir_actu',['actualite'=>$actualite,'countries'=>$countrie,'categories'=>$categorie]);
+    }
+
 
 
 }

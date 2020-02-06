@@ -1,4 +1,4 @@
-@extends('page')
+@extends('vareiete')
 @section('content')
     <div class="album py-5 bg-light" xmlns="http://www.w3.org/1999/html">
         <div class="container">
@@ -33,7 +33,7 @@
 
             <br><br> <br>
             <div class="col-12 text-center">
-{{--                {{$mouves->links()}}--}}
+                {{$mouves->links()}}
             </div>
         </div>
     </div>

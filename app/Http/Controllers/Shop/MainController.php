@@ -5,10 +5,8 @@ namespace App\Http\Controllers\Shop;
 use App\Artiste_recommade;
 use App\Categorie;
 use App\Commentaire;
-
+use App\Country;
 use App\Http\Controllers\Controller;
-
-
 use App\Mouve;
 use App\User;
 use Carbon\Carbon;
@@ -17,38 +15,51 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
+
+
+use Symfony\Component\Console\Input\Input;
+
 class MainController extends Controller
 {
     //
 
     public function index(Request $request)
     {
+        $countrie = Country::all();
         $user = User::all();
         $categorie = Categorie::all();
-        $categories = Categorie::find($request->id);
-
         $mouve = DB::table('mouves')
             ->orderBy('created_at', 'desc')->paginate(20);
 
-        return view('shop.home', ['users' => $user,'mouves' => $mouve,'mouve' => $mouve,'categories'=>$categories,'categorie'=>$categorie]);
+        return view('shop.home', ['users' => $user,'countries'=>$countrie,'mouves' => $mouve,'mouve' => $mouve,'categories'=>$categorie]);
     }
-
 
 
     public function voirCategorie(Request $request){
+
         $user = User::all();
 
-//        $categories = Categorie::all();
-        $categorie = Categorie::find($request->id);
+        $countrie = Country::all();
 
-        $mouves = $categorie->mouves;
+        $cat = Categorie::find($request->id);
 
-//        $mouve = DB::table('mouves')->where('categorie_id', '=',$categorie->id)->orderBy('created_at', 'desc')->paginate(20);
-//        $mouve = DB::table('mouves')->where('categorie_id', '=',$categorie->id)->orderBy('created_at', 'desc')->get();
+        $mouves = $cat->mouves;
 
-        return view('shop.categorie', ['users'=>$user,'mouves'=>$mouves,'categories'=>$categorie]);
+
+        return view('shop.categorie', ['users'=>$user,'mouves'=>$mouves,'countries'=>$countrie,'categories'=>$cat]);
     }
 
+
+
+    public function nation(Request $request){
+        $user = User::all();
+        $categorie = Categorie::all();
+        $countrie = Country::find($request->id);
+
+        $mouve = DB::table('mouves')->where('countrie_id', '=',$countrie->id)->orderBy('created_at', 'desc')->paginate(12);
+
+        return view('shop.pays', ['countries'=>$countrie,'categories'=>$categorie,'mouves'=>$mouve,'users'=>$user]);
+    }
 
 //
 //    public function category(Request $request){
@@ -77,14 +88,14 @@ class MainController extends Controller
         $categorie = Categorie::all();
         $mouve = Mouve::find($request->id);
         $user = User::find($request->id);
-
+        $countrie = Country::all();
          // Affichage des commentaires
 //        $commentaire = DB::table('commentaires')->where('mouve_id', '=',$mouve->id)->orderBy('created_at', 'desc')->get();
 
         $artiste_recommandes = DB::table('artiste_recommandes')
             ->orderBy('created_at', 'desc')->paginate(12);
 
-        return view('shop.voir_artiste',['users'=>$user,'categories'=>$categorie,'mouves'=>$mouve,'commentaire'=>$commentaire,'mouve'=>$mouve,'artiste_recommandes' => $artiste_recommandes]);
+        return view('shop.voir_artiste',['users'=>$user,'categories'=>$categorie,'countries'=>$countrie,'mouves'=>$mouve,'commentaire'=>$commentaire,'mouve'=>$mouve,'artiste_recommandes' => $artiste_recommandes]);
       }
 
 
@@ -101,18 +112,21 @@ class MainController extends Controller
     }
 
 
-    public function recherche(Request $request)
+    public function recherche()
     {
-        $categorie = Categorie::all();
-        $request->validate([
-            'query'=>'required|min:3',
-        ]);
-        $query = $request->input('query');
-        $user = User::where('name','lien_facebook','lien_instagram','LIKE','%'.$query.'%');
+        $mouve = Mouve::all();
+        $mots = Input::get('search');
+        $resultats = Mouve::where('desc_mouve','LIKE','%'.$mots .'%')
+            ->orwhere('lib_mouve','LIKE','%'.$mots.'%')->paginate(4);
+//        $request->validate([
+//            'query'=>'required|min:3',
+//        ]);
+//        $query = $request->input('query');
+//        $user = User::where('name','lien_facebook','lien_instagram','LIKE','%'.$query.'%');
+//
+//        $mouve = Mouve::where('description','photo_principale','LIKE','%'.$query.'%');
 
-        $mouve = Mouve::where('description','photo_principale','LIKE','%'.$query.'%');
-
-        return view('shop.recherche',['users'=>$user,'mouves'=>$mouve,'categories'=>$categorie,'query'=>$query]);
+        return view('shop.recherche',['mouves'=>$mouve,'resultats'=>$resultats]);
 
     }
 
@@ -169,12 +183,6 @@ class MainController extends Controller
 
 
 
-
-
-
-
-
-
     public function editListe(Request $request)
     {
         $user = User::find($request->id);
@@ -220,5 +228,42 @@ class MainController extends Controller
         return redirect()->route('user_liste')->with('notice', 'Artiste <strong>' . $user->nom . '</strong> a été banni');
 
     }
+
+//
+//    // Appel ajax
+//$.ajax({
+//url: BASE_URL + SPECIFIC,
+//method: 'POST',
+//dataType: 'json',
+//data: dataToSend
+//}).done(function (response) {
+//    console.log(response);
+//
+//    // Si ok => je redirige
+//    if (response.code == 1) {
+//        // Je change ma div alert en mode "succès"
+//        $('#alerts').removeClass('alert-danger').addClass('alert-success').html('Connexion réussie').show();
+//        // Je redirige après 2 secondes
+//
+//        window.setTimeout(function () {
+//            location.href = response.redirect;
+//        }, 1000);
+//    }
+//    // Sinon, il y a une erreur => affichage des erreurs
+//    else {
+//        // Je cible la div des alertes
+//        var $alertsDiv = $('#alerts');
+//        // Je change le contenu HTML par la liste des erreurs retournées
+//        $alertsDiv.empty();
+//        // foreach made in jQuery (ressemble au foreach de PHP)
+//        $.each(response.errors, function (index, value) {
+//            $alertsDiv.append(value + '<br>');
+//        });
+//        // J'affiche les alertes
+//        $alertsDiv.show();
+//    }
+//}).fail(function (jqXHR, textStatus, errorThrown) {
+//    alert('Ajax failed');
+//    console.log(jqXHR, textStatus, errorThrown);
 
 }

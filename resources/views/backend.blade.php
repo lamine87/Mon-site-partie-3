@@ -24,7 +24,7 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
-            <div class="icon-accueil"><a href="#"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
+            <div class="icon-accueil"><a href="{{route('shop_home')}}"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
             </div>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -107,7 +107,8 @@
 
             <div class="col-md-8 col-12 mt-5">
 
-                <p style="line-height: 1.7rem; color: #cce5ff">On sait depuis longtemps que travailler avec du texte lisible
+                <p style="line-height: 1.7rem; color: #cce5ff">
+                    La musique dans le coeur résonne aussi fort que l'amour
 
                 </p>
             </div>

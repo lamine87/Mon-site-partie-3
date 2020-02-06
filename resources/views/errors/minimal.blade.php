@@ -6,9 +6,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}">
-
     <title>@yield('title')</title>
-
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
     <!-- Custom styles for this template -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
@@ -50,7 +48,6 @@
         }
     </style>
 </head>
-
 <!--Navbar-->
 <body>
 <header>
@@ -79,20 +76,15 @@
     </nav>
 </header>
 
-
-
 <div class="flex-center position-ref full-height">
     <div class="code">
         @yield('code')
     </div>
 
-
     <div class="message" style="padding: 10px;">
         @yield('message')
     </div>
 </div>
-
-
 
 <footer class="page-footer font-small indigo">
 

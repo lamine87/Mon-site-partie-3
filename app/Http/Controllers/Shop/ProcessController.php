@@ -24,18 +24,15 @@ class ProcessController extends Controller
     }
 
 
-    // Affichage de l'espace administrateur
+    // Affichage de l'interface administrateur
     public function admin()
     {
-
         $user = User::all();
-
         $mouve = DB::table('mouves')
             ->orderBy('created_at', 'desc')->paginate(6);
 
         return view('backend.admin_gestion', ['users' => $user, 'mouves' => $mouve]);
     }
-
 
 
 //     //Enregistrement de musique dans la base de données pour administrateur
@@ -93,11 +90,10 @@ class ProcessController extends Controller
     {
         $user = Auth::user();
         $mouve = Mouve::find($request->id);
-
         return view('backend.admin_edit', ['user' => $user, 'mouve' => $mouve]);
     }
 
-    // Validation de la modification
+
     public function update(Request $request)
     {
         $user = Auth::user();
@@ -131,17 +127,15 @@ class ProcessController extends Controller
 
         }
 
-
         $user->lien_facebook = $request->lien_facebook;
         $user->lien_instagram = $request->lien_instagram;
         $user->save();
-
 
         $mouve->url_video = $request->url_video;
         $mouve->description = $request->description;
         $mouve->photo_principale = $fileName;
         $mouve->save();
-        return redirect()->route('shop_admin')->with('notice', 'Artiste <strong>' . $user->id . '</strong> a bien été Modifier');
+        return redirect()->route('shop_admin')->with('notice', 'Artiste <strong>' . $user->nom . '</strong> a bien été Modifier');
     }
 
     public function delete(Request $request)
@@ -197,12 +191,8 @@ class ProcessController extends Controller
 //
 //        $comment->save();
 //
-//        return ('Votre commentaire à bien été ajouté');
+//        return redirect()->route('voir_artiste')->with('notice', 'Musique <strong>' .$comment->id. '</strong> a bien été Modifier');
 //    }
-
-
-
-
 
 
 
@@ -210,7 +200,7 @@ class ProcessController extends Controller
 
        request()->validate(
             [
-                'content'=>['required'],
+                'texte'=>['required'],
         ]);
      Comment::create([
           'nom' => 'nom',
@@ -218,7 +208,8 @@ class ProcessController extends Controller
           'texte'=> request('content'),
       ]);
 
-        return response()->json(['message' => 'task was successful']);
+        return "Votre commentaire a bien été enregistré";
+//        return response()->json(['message' => 'task was successful']);
 
     }
 

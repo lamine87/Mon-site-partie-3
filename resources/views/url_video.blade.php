@@ -22,7 +22,7 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
-            <div class="icon-accueil"><a href="#"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
+            <div class="icon-accueil"><a href="{{route('shop_home')}}"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
             </div>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
@@ -36,29 +36,25 @@
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a class="nav-link " href="#">Actualité <span class="sr-only"></span></a>
+                    <a class="nav-link " href="{{route('afficheActu')}}">Actualité <span class="sr-only"></span></a>
                 </li>
                 <li class="nav-item active">
                     <a class="nav-link" href="#">Top-10</a>
                 </li>
-                <li class="nav-item active">
-                    <a href="#" target="_self" class="nav-link " href="#">Contact</a>
-                </li>
 
-                <li class="nav-item active">
-                    <div class="dropdown">
-                        <div id="variete" data-toggle="dropdown">Variété</div>
-                        <div class="dropdown-menu">
-{{--                            @foreach($categories as $categorie )--}}
-{{--                                <div class="dropdown-item">--}}
-{{--                                    <a href="{{route('categorie_music',['id'=>$categorie->id])}}">--}}
-{{--                                        {{$categorie->nom}}--}}
-{{--                                    </a>--}}
-{{--                                </div>--}}
-{{--                            @endforeach--}}
-                        </div>
+                <li class="nav-item dropdown active">
+                    <a class="nav-link dropdown-toggle" href="#"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="variete">
+                        Variété
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        @foreach($categories as $categorie)
+                            <a class="dropdown-item" href="{{route('voir_categorie',['id'=>$categorie->id])}}">
+                                {{$categorie->nom}}
+                            </a>
+                        @endforeach
                     </div>
                 </li>
+
 
                 <li class="nav-item active">
                     <a href="{{route('home')}}" target="_self" class="nav-link " href="#">Se connecter</a>
@@ -159,7 +155,8 @@
 
             <div class="col-md-8 col-12 mt-5">
 
-                <p style="line-height: 1.7rem; color: #cce5ff">On sait depuis longtemps que travailler avec du texte lisible
+                <p style="line-height: 1.7rem; color: #cce5ff">
+                    La musique dans le coeur résonne aussi fort que l'amour
 
                 </p>
             </div>
@@ -222,9 +219,9 @@
 
 {{--<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>--}}
 
+<script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/jquery.js')}}"></script>
 <script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/holder.min.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 </body>
