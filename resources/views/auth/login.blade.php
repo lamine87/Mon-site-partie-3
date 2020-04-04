@@ -15,7 +15,6 @@
                         </a>
                 </div>
              </div>
-
                 <div class="card-body">
 
                       {{--          Message pour bannir un user--}}

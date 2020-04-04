@@ -76,6 +76,12 @@ footer{
     margin-top: 50px;
 }
 
+.js-voting-container{
+    display: flex;
+}
+#counter{
+    padding: 10px;
+}
 
 p{
     color: #0a0a0a;
@@ -131,9 +137,18 @@ h5{
 #comment{
     background-image: url("../images/gringe-dadju.jpg");
 }
+
 .comment{
-    color: red;
-    font-weight: bold;
+    color: #fff891;
+    font-size: 18px;
+    /*font-weight: bold;*/
+    /*display: flex;*/
+}
+.container-comment{
+    color: #fefefe;
+}
+.comment :hover{
+    color: #fe1318;
 }
 .flex{
     margin-top: 50px;

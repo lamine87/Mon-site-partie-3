@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mouve extends Model
 {
 
+    protected $fillable = ['id', 'nom'];
 
     public function user()
     {
@@ -15,33 +16,31 @@ class Mouve extends Model
     }
 
 
-    public function countrie()
+    public function countries()
     {
-        return $this->belongsTo('App\Country');
+        return $this->belongsTo('App\Country', 'id');
     }
+
 
     public function commentaires()
     {
         return $this->belongsTo('App\Commentaire', 'id', 'url_video');
+
     }
 
 
-//   protected $fillable = ['nom','email','texte'];
-    public function comments()
-    {
-        return $this->hasMany('App\Comment');
-    }
 
 
     public function categories()
     {
-//        return $this->belongsToMany('App\Categorie', 'id', 'nom')
+        return $this->belongsToMany('App\Categorie','id')->withTimestamps();
 //            ->using('App\CategorieMouve')
 //            ->withPivot([
 //                'categorie_id',
 //                'mouve_id',
 //            ]);
     }
+
 }
 
 

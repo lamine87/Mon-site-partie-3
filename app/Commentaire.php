@@ -8,14 +8,13 @@ class Commentaire extends Model
 {
     //
 
-    protected $fillable = [
-        'url_video', 'id', 'description'
-    ];
+//    protected $table = ['url_video'];
+
 
     public function mouve(){
         return $this->belongsTo('App\Mouve','id','url_video');
     }
-
+    protected $fillable = ['url_video'];
 
 
 }

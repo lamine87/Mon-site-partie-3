@@ -7,19 +7,21 @@ use Illuminate\Database\Eloquent\Model;
 class Categorie extends Model
 {
 
-//    public function mouves()
-//    {
-//        return $this->belongsToMany('App\Mouve');
-////
-//
-//    }
+
+    protected $fillable = ['id', 'nom'];
+
+
 
     public function mouves()
+
     {
-        return $this->belongsToMany
-        ('App\Mouve', 'categorie_mouves')
-            ->withTimestamps()
-            ->using('App\CommandeProduit')
-            ->withPivot('categorie_id', 'mouve_id');
+        return $this->belongsToMany('App\Mouve','id')
+            ->using('App\CategorieMouve')
+            ->withPivot([
+                'categorie_id',
+                'mouve_id',
+            ]);
+        }
+
+
     }
-}

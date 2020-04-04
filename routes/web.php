@@ -26,11 +26,15 @@ Route::get('/voir/pays/{id}','Shop\MainController@nation')->name('voirPays');
         // afficher les categories
 //Route::get('/variete/{id}','Shop\MainController@category')->name('categorie_music');
 
-         // voir categorie liée aux mouves
+         // voir categorie liée aux vidéo(mouves)
 Route::get('/voir/categorie/{id}','Shop\MainController@voirCategorie')->name('voir_categorie');
 
-               // Enregistrement des commentaires
-//Route::post('/shop/store{id}','Shop\ProcessController@store')->name('comment_store');
+//Route::get('/nav/categorie/{id}','Shop\MainController@nave');
+
+                //Enregistrement des commentaires
+Route::post('/shop/store{id}','Shop\MainController@store')->name('comment_store');
+
+Route::get('/video/comment')->name('comment_Video');
 
 Route::get('/actualite','Backend\ArtisteController@actu')->name('afficheActu');
 

@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Relations\Pivot;
 class CategorieMouve extends Pivot
 {
     //
-//    protected $table="categorie_mouves";
+    protected $table="categorie_mouves";
 }

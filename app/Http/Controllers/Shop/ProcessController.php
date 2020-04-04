@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Shop;
 
 
 use App\Artiste_recommande;
+use App\Categorie;
 use App\Commentaire;
+use App\Country;
 use App\Http\Controllers\Controller;
 use App\Media_recommande;
 use App\Mouve;
@@ -164,7 +166,6 @@ class ProcessController extends Controller
 //        $commentaire->texte = $request->texte;
 //
 //        $commentaire->mouve_id = $mouve->id;
-//
 //        $commentaire->save();
 //
 //
@@ -183,8 +184,8 @@ class ProcessController extends Controller
 //                'texte' => 'required|max:200']
 //        );
 //        $comment = new Comment();
-////        $comment->nom = $request->nom;
-////        $comment->email = $request->email;
+//        $comment->nom = $request->nom;
+//        $comment->email = $request->email;
 //        $comment->texte = $request->texte;
 //
 ////        $comment->mouve_id = $mouve->id;
@@ -196,24 +197,27 @@ class ProcessController extends Controller
 
 
 
-    public function store(){
 
-       request()->validate(
-            [
-                'texte'=>['required'],
-        ]);
-     Comment::create([
-          'nom' => 'nom',
-          'email'=> 'email',
-          'texte'=> request('content'),
-      ]);
-
-        return "Votre commentaire a bien été enregistré";
-//        return response()->json(['message' => 'task was successful']);
-
-    }
-
-
+//    public function voirCategorie(Request $request){
+//
+//        $user = User::all();
+//
+//        $countrie = Country::all();
+//
+//        $categorie = Categorie::find($request->id);
+//
+//        $test = DB::table('categorie_mouves')
+//            ->join('mouves', 'mouves.id', '=',
+//                'categorie_mouves.mouve_id')
+//            ->join('categories', 'categories.id', '=',
+//                'categorie_mouves.categorie_id')
+//            ->select('categorie_mouves.*','mouves.*', 'categories.*')->get();
+//
+//
+////        $mouve = DB::table('categorie_mouves')->where('mouve_id', '=',$cat->categorie_id)->orderBy('created_at', 'desc')->paginate(12);
+//
+//        return view('shop.categorie', ['users'=>$user,'mouves'=>$test,'categories'=>$categorie,'countries'=>$countrie]);
+//    }
 
 
 

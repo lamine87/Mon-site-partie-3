@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Http\ViewComposers\HeaderComposer;
+use App\Http\ViewComposers\PageComposer;
 use Illuminate\Support\ServiceProvider;
 
 
@@ -26,6 +26,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
 
-//        view()->composer(['categorie','page','page_tag'],HeaderComposer::class);
+//        view()->composer('page', PageComposer::class);
     }
 }

@@ -30,13 +30,12 @@
 
             </div>
             <br>
-            @foreach($users as $user)
-                <a href="{{route('voir_tag',['id'=>$user->id])}}" type="button" class="btn btn-primary">{{$user->name}}</a>
-            @endforeach
-           <br><br> <br>
-            <div class="col-12 text-center">
-{{--                {{$mouves->links()}}--}}
-            </div>
-        </div>
-    </div>
+
+     @include('button-tag')
+     <br>  <br>  <br>
+     <div class="col-12 text-center">
+         {{$mouves->links()}}
+     </div>
+ </div>
+</div>
 @endsection

@@ -7,10 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     //
-//    protected $fillable = ['id','nom','image_drapeau'];
+    protected $fillable=['id'];
 
-    public function mouves(){
+    public function mouve(){
 
         return $this->hasMany('App\Mouve','id');
+
     }
+
 }
