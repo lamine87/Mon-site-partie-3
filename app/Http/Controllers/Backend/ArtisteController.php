@@ -33,7 +33,8 @@ class ArtisteController extends Controller
     // Affichage de la page d'aide a utilisation
     public function aide()
     {
-        return view('url_video');
+        $categorie = Categorie::all();
+        return view('url_video',['categories'=>$categorie]);
     }
 
 

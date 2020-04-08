@@ -12,7 +12,7 @@ class Categorie extends Model
 
 
 
-    public function mouves()
+    public function mouve()
 
     {
         return $this->belongsToMany('App\Mouve','id')

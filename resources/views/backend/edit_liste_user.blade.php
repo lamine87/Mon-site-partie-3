@@ -8,6 +8,9 @@
                     <h1 class="h2">Liste utilisateur</h1>
 
                 </div>
+{{--                @foreach($users as $user)--}}
+{{--                    <div>{{$user->name}}</div>--}}
+{{--                @endforeach--}}
 
                 <form action="{{route('backend_liste_update',['id'=>$user->id])}}" method="POST" enctype="multipart/form-data">
 
@@ -27,7 +30,7 @@
 {{--                        </div>--}}
 
 {{--                    </div>--}}
-
+                    <br><br>
                     <div class="form-row">
                         <div class="form-group col-md-8">
                             <label for="nom">Lien Facebook</label>
@@ -38,7 +41,7 @@
                             <input type="text" class="form-control" id="lien_instagram" name="lien instagram" value="{{$user->lien_instagram}}">
                         </div>
                      </div>
-
+                    <br><br>
                     <button type="submit" class="btn btn-primary">Valider</button>
                 </form>
             </main>

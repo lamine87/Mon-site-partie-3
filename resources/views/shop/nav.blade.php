@@ -25,11 +25,11 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
 
-{{--                @foreach($categories as $categorie)--}}
-{{--                    <a class="dropdown-item" href="{{route('voir_categorie',['id'=>$categorie->id])}}">--}}
-{{--                        {{$categorie->nom}}--}}
-{{--                    </a>--}}
-{{--                @endforeach--}}
+                @foreach($categories as $categorie)
+                    <a class="dropdown-item" href="{{route('voir_categorie',['id'=>$categorie->id])}}">
+                        {{$categorie->nom}}
+                    </a>
+                @endforeach
             </div>
             </li>
 
@@ -38,12 +38,12 @@
                     Pays
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-{{--                    @foreach($countries as $countrie)--}}
-{{--                        <a class="dropdown-item" href="{{route('voirPays',['id'=>$countrie->id])}}">--}}
-{{--                            {{$countrie->nom}}--}}
-{{--                            <img src="{{asset('img/icon/'.$countrie->image_drapeau)}}">--}}
-{{--                        </a>--}}
-{{--                    @endforeach--}}
+                    @foreach($countries as $countrie)
+                        <a class="dropdown-item" href="{{route('voirPays',['id'=>$countrie->id])}}">
+                            {{$countrie->nom}}
+                            <img src="{{asset('img/icon/'.$countrie->image_drapeau)}}">
+                        </a>
+                    @endforeach
                     </div>
                 </li>
 

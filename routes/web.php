@@ -34,7 +34,7 @@ Route::get('/voir/categorie/{id}','Shop\MainController@voirCategorie')->name('vo
                 //Enregistrement des commentaires
 Route::post('/shop/store{id}','Shop\MainController@store')->name('comment_store');
 
-Route::get('/video/comment')->name('comment_Video');
+Route::get('/affiche/comment','Shop\MainController@store')->name('comment_Video');
 
 Route::get('/actualite','Backend\ArtisteController@actu')->name('afficheActu');
 
@@ -82,7 +82,7 @@ Route::get('/backend/delete/{id}','Backend\ArtisteController@delete')->name('bac
 //        Route::get('/shop/admin','Shop\ProcessController@admin')->name('backend_admin');
 
 
-               // Affichage de la liste des user dans l'espace administrateur
+               // Affichage de la liste des users dans l'espace administrateur
      Route::get('/shop/liste','Shop\MainController@liste')->name('user_liste');
 
               // Modifier user

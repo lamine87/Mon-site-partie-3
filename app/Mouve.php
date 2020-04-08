@@ -31,7 +31,7 @@ class Mouve extends Model
 
 
 
-    public function categories()
+    public function categorie()
     {
         return $this->belongsToMany('App\Categorie','id')->withTimestamps();
 //            ->using('App\CategorieMouve')

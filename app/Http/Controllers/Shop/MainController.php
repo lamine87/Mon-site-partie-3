@@ -35,32 +35,26 @@ class MainController extends Controller
         return view('shop.home', ['users' => $user,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
     }
 
-//public function nave(Request $request){
-//
-//    $categorie = Categorie::find($request->id);
-//
-//        return view('shop.nav',['categories'=>$categorie]);
-//}
-
 
     public function voirCategorie(Request $request){
 //        $user = User::all();
         $countrie = Country::all();
-        $categorie = Categorie::find($request->id);
-//        $mouve = $categorie->mouves;
+        $categorie = Categorie::all();
+//        $mouves = $categorie->mouves;
 
-//        $mouve = DB::table('categorie_mouves')
-//            ->join('mouves', 'mouves.id', '=',
-//                'categorie_mouves.mouve_id')
-//            ->join('categories', 'categories.id', '=',
-//                'categorie_mouves.categorie_id')
-//            ->select('categorie_mouves.*','mouves.*', 'categories.*')->get();
+        $mouves = DB::table('categorie_mouves')
+            ->join('mouves', 'mouves.id', '=',
+                'categorie_mouves.mouve_id')
+            ->join('categories', 'categories.id', '=',
+                'categorie_mouves.categorie_id')
+            ->select('categorie_mouves.*','mouves.*', 'categories.*')->get();
 //            dd($mouve);
-        $mouve = DB::table('categorie_mouves')->where('mouve_id', '=',$categorie->id);
+//        $mouve = DB::table('categorie_mouves')->where('mouve_id', '=',$request->id);
 
         return view('shop.categorie', [
 //            'users'=>$user,
-            'mouves'=>$mouve,
+//            'mouves'=>$mouve,
+            'mouves'=>$mouves,
             'categories'=>$categorie,
 //            'cat'=>$cat,
             'countries'=>$countrie
@@ -98,11 +92,12 @@ class MainController extends Controller
     public function nation(Request $request){
         $user = User::all();
         $categorie = Categorie::all();
-        $countrie = Country::find($request->id);
+        $countie = Country::all();
 
-        $mouve = DB::table('mouves')->where('countrie_id', '=',$countrie->id)->orderBy('created_at', 'desc')->paginate(12);
 
-        return view('shop.pays', ['countries'=>$countrie,'categories'=>$categorie,'mouves'=>$mouve,'users'=>$user]);
+        $mouve = DB::table('mouves')->where('countrie_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(12);
+
+        return view('shop.pays', ['countries'=>$countie,'categories'=>$categorie,'mouves'=>$mouve,'users'=>$user]);
     }
 
 
@@ -119,10 +114,11 @@ class MainController extends Controller
         {
             $categorie = Categorie::all();
             $users = User::find($request->id);
+            $countrie = Country::all();
 
             $mouve = DB::table('mouves')->where('user_id', '=',$users->id)->orderBy('created_at', 'desc')->paginate(30);
 
-            return view('shop.affiche_tag',['users'=>$users,'mouves'=>$mouve,'categories'=>$categorie]);
+            return view('shop.affiche_tag',['users'=>$users,'mouves'=>$mouve,'categories'=>$categorie,'countries'=>$countrie]);
     }
 
 
@@ -147,10 +143,10 @@ class MainController extends Controller
     {
         $categorie = Categorie::find($request->id);
         $users = User::find($request->id);
-
+        $countrie = Country::all();
         $mouve = DB::table('mouves')->where('user_id', '=',$users->id)->orderBy('created_at', 'desc')->paginate(6);
 
-        return view('shop.tag_artiste',['users'=>$users,'mouves'=>$mouve,'categories'=>$categorie]);
+        return view('shop.tag_artiste',['users'=>$users,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
     }
 
 
@@ -209,7 +205,7 @@ class MainController extends Controller
     {
         $user = User::find($request->id);
 
-        return view('backend.edit_liste_user', ['user' => $user]);
+        return view('backend.edit_liste_user', ['user'=>$user]);
     }
 
 
