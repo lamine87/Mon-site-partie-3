@@ -17,6 +17,7 @@ Route::get('/','Shop\MainController@index')->name('shop_home');
 Route::get('/recommandation/{id}','Shop\MainController@recommande')->name('artiste_recommande');
 
 Route::get('/voir/artiste','Shop\MainController@artiste')->name('voir_artiste');
+
                      //Affichage du Tag
 Route::get('/tag/{id}','Shop\MainController@tag')->name('voir_tag');
                    // Voir titre de l'artiste
@@ -39,7 +40,6 @@ Route::get('/affiche/comment','Shop\MainController@store')->name('comment_Video'
 Route::get('/actualite','Backend\ArtisteController@actu')->name('afficheActu');
 
 Route::get('/voir/actualite/{id}','Backend\ArtisteController@videoActu')->name('voirActu');
-
 
 Route::post('/comments/{id}','Shop\ProcessController@store');
 
@@ -76,7 +76,7 @@ Route::get('/backend/delete/{id}','Backend\ArtisteController@delete')->name('bac
 
  Route::middleware('auth.admin')->group(function () {
               // Affichage de l'espace administrateur
-        Route::get('/shop/admin','Shop\ProcessController@admin')->name('shop_admin');
+     Route::get('/shop/admin','Shop\ProcessController@admin')->name('shop_admin');
 
 
 //        Route::get('/shop/admin','Shop\ProcessController@admin')->name('backend_admin');
@@ -100,13 +100,13 @@ Route::get('/backend/delete/{id}','Backend\ArtisteController@delete')->name('bac
 
 
              // Editer musique par l'administrateur
-        Route::get('/backend/admin/edit/{id}','Shop\ProcessController@edit')->name('backend_admin_edit');
+     Route::get('/backend/admin/edit/{id}','Shop\ProcessController@edit')->name('backend_admin_edit');
 
-                           // Valider la modification
-        Route::post('/backend/admin/update/{id}','Shop\ProcessController@update')->name('backend_admin_update');
+                       // Valider la modification
+     Route::post('/backend/admin/update/{id}','Shop\ProcessController@update')->name('backend_admin_update');
 
-                                       // Supprimer artiste
-        Route::get('/backend/admin/delete/{id}','Shop\ProcessController@delete')->name('backend_admin_delete');
+                                   // Supprimer artiste
+     Route::get('/backend/admin/delete/{id}','Shop\ProcessController@delete')->name('backend_admin_delete');
 
 });
 

@@ -3,10 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\Pivot;
 
-class CategorieMouve extends Pivot
+class CategorieMouve extends Model
 {
     //
-    protected $table="categorie_mouves";
 }

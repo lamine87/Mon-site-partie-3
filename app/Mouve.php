@@ -16,7 +16,7 @@ class Mouve extends Model
     }
 
 
-    public function countries()
+    public function countrie()
     {
         return $this->belongsTo('App\Country', 'id');
     }
@@ -31,9 +31,9 @@ class Mouve extends Model
 
 
 
-    public function categorie()
+    public function categories()
     {
-        return $this->belongsToMany('App\Categorie','id')->withTimestamps();
+        return $this->belongsToMany('App\Categorie')->withTimestamps();
 //            ->using('App\CategorieMouve')
 //            ->withPivot([
 //                'categorie_id',

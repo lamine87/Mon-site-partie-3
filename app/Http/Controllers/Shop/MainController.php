@@ -27,7 +27,6 @@ class MainController extends Controller
         $countrie = Country::all();
         $user = User::all();
         $categorie = Categorie::all();
-//        $cat = Categorie::find($request->id);
 
         $mouve = DB::table('mouves')
             ->orderBy('created_at', 'desc')->paginate(20);
@@ -37,77 +36,34 @@ class MainController extends Controller
 
 
     public function voirCategorie(Request $request){
-//        $user = User::all();
+        $user = User::all();
         $countrie = Country::all();
         $categorie = Categorie::all();
-//        $mouves = $categorie->mouves;
 
-        $mouves = DB::table('categorie_mouves')
-            ->join('mouves', 'mouves.id', '=',
-                'categorie_mouves.mouve_id')
-            ->join('categories', 'categories.id', '=',
-                'categorie_mouves.categorie_id')
-            ->select('categorie_mouves.*','mouves.*', 'categories.*')->get();
-//            dd($mouve);
-//        $mouve = DB::table('categorie_mouves')->where('mouve_id', '=',$request->id);
+        $mouve = DB::table('mouves')
+            ->join('categorie_mouves', 'mouves.id', '=', 'categorie_mouves.mouve_id')
+            ->join('categories', 'categories.id', '=', 'categorie_mouves.categorie_id')
+            ->where('categorie_id', '=', $request->id)
+            ->orderBy('mouves.created_at', 'desc')->paginate(12);
 
         return view('shop.categorie', [
-//            'users'=>$user,
-//            'mouves'=>$mouve,
-            'mouves'=>$mouves,
-            'categories'=>$categorie,
-//            'cat'=>$cat,
+            'users'=>$user,
+            'mouves'=>$mouve,
+            'categories' => $categorie,
             'countries'=>$countrie
         ]);
     }
 
 
-//    public function index(Request $request)
-//    {
-//        $countrie = Country::all();
-//        $user = User::all();
-//        $categorie = Categorie::all();
-//        $mouve = DB::table('mouves')
-//            ->orderBy('created_at', 'desc')->paginate(20);
-//
-
-//        $test = DB::table('categorie_mouves')
-//            ->join('mouves', 'mouves.id', '=',
-//                'categorie_mouves.mouve_id')
-//            ->join('categories', 'categories.id', '=',
-//                'categorie_mouves.categorie_id')
-//            ->select('categorie_mouves.*', 'mouves.*', 'categories.*')
-//            ->get();
-//
-//        dd($test);
-//
-//
-//
-//        return view('shop.home', ['users' => $user, 'countries' =>
-//            $countrie, 'mouves' => $mouve, 'mouve' => $mouve, 'categories' =>
-//            $categorie]);
-
-
-
     public function nation(Request $request){
         $user = User::all();
         $categorie = Categorie::all();
-        $countie = Country::all();
-
+        $countrie = Country::all();
 
         $mouve = DB::table('mouves')->where('countrie_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(12);
 
-        return view('shop.pays', ['countries'=>$countie,'categories'=>$categorie,'mouves'=>$mouve,'users'=>$user]);
+        return view('shop.pays', ['countries'=>$countrie,'categories'=>$categorie,'mouves'=>$mouve,'users'=>$user]);
     }
-
-
-//    public function category(Request $request){
-//
-//        $mouve = Mouve::find($request->id);
-//        $categorie = Categorie::find($request->id);
-//
-//        return view('shop.voir_artiste', ['mouves'=>$mouve]);
-//    }
 
 
     public function titre(Request $request)
@@ -141,10 +97,10 @@ class MainController extends Controller
 
     public function tag(Request $request)
     {
-        $categorie = Categorie::find($request->id);
-        $users = User::find($request->id);
+        $categorie = Categorie::all();
+        $users = User::all();
         $countrie = Country::all();
-        $mouve = DB::table('mouves')->where('user_id', '=',$users->id)->orderBy('created_at', 'desc')->paginate(6);
+        $mouve = DB::table('mouves')->where('user_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(6);
 
         return view('shop.tag_artiste',['users'=>$users,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
     }

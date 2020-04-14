@@ -12,15 +12,15 @@ class Categorie extends Model
 
 
 
-    public function mouve()
+    public function mouves()
 
     {
-        return $this->belongsToMany('App\Mouve','id')
-            ->using('App\CategorieMouve')
-            ->withPivot([
-                'categorie_id',
-                'mouve_id',
-            ]);
+        return $this->belongsToMany('App\Mouve')->withTimestamps();
+//            ->using('App\CategorieMouve')
+//            ->withPivot([
+//                'categorie_id',
+//                'mouve_id',
+//            ]);
         }
 
 
