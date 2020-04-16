@@ -62,7 +62,7 @@ class ArtisteController extends Controller
 
             //Dimensionner l'image
 
-            $img->resize(400, 400);
+            $img->resize(500, 500);
 
             // Imprimer l'icon sur l'image
             $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
@@ -185,8 +185,6 @@ class ArtisteController extends Controller
         $actualite = Actualite::find($request->id);
         return view('shop.voir_actu',['actualite'=>$actualite,'countries'=>$countrie,'categories'=>$categorie]);
     }
-
-
-
+    
 }
 

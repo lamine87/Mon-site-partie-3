@@ -16,12 +16,6 @@ class Categorie extends Model
 
     {
         return $this->belongsToMany('App\Mouve')->withTimestamps();
-//            ->using('App\CategorieMouve')
-//            ->withPivot([
-//                'categorie_id',
-//                'mouve_id',
-//            ]);
+
         }
-
-
     }

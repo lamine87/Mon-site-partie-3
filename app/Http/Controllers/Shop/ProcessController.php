@@ -120,7 +120,7 @@ class ProcessController extends Controller
             $img = Image::make($request->file('photo_principale')->getRealPath());
 
             //Dimensionner l'image
-            $img->resize(400, 400);
+            $img->resize(500, 500);
 
             // Imprimer l'icon sur l'image
             $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);

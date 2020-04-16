@@ -55,6 +55,8 @@ class MainController extends Controller
     }
 
 
+
+
     public function nation(Request $request){
         $user = User::all();
         $categorie = Categorie::all();
@@ -78,6 +80,7 @@ class MainController extends Controller
     }
 
 
+
     public function artiste(Request $request)
     {
 
@@ -86,12 +89,13 @@ class MainController extends Controller
         $user = User::find($request->id);
         $countrie = Country::all();
          // Affichage des commentaires
-        $commentaire = DB::table('commentaires')->where('mouve_id', '=',$mouve->id)->orderBy('created_at', 'desc')->get();
+        $commentaire = DB::table('commentaires')
+            ->where('mouve_id', '=',$request->id)->orderBy('created_at', 'desc')->get();
 
         $artiste_recommandes = DB::table('artiste_recommandes')
             ->orderBy('created_at', 'desc')->paginate(12);
 
-        return view('shop.voir_artiste',['users'=>$user,'categories'=>$categorie,'countries'=>$countrie,'mouves'=>$mouve,'commentaires'=>$commentaire,'mouve'=>$mouve,'artiste_recommandes' => $artiste_recommandes]);
+        return view('shop.voir_artiste',['users'=>$user,'categories'=>$categorie,'countries'=>$countrie,'commentaires'=>$commentaire,'mouve'=>$mouve,'artiste_recommandes' => $artiste_recommandes]);
       }
 
 

@@ -5,7 +5,7 @@
             <div class="row">
                 @foreach($mouves as $mouve)
                     <div class="col-md-2 box-shadow">
-                        <a href="{{route('voir_artiste',['id'=>$mouve->id])}}" target="_self">
+                        <a href="{{route('voir_cat',['id'=>$mouve->mouve_id])}}" target="_self">
                             <img src="{{asset('storage/uploads/'.$mouve->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
 
                             <div class="text-center">

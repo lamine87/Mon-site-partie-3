@@ -18,19 +18,19 @@ Route::get('/recommandation/{id}','Shop\MainController@recommande')->name('artis
 
 Route::get('/voir/artiste','Shop\MainController@artiste')->name('voir_artiste');
 
-                     //Affichage du Tag
+Route::get('/voir/cat/{id}','Shop\MainController@artiste')->name('voir_cat');
+
+        //Affichage du Tag
 Route::get('/tag/{id}','Shop\MainController@tag')->name('voir_tag');
                    // Voir titre de l'artiste
 Route::get('/titre{id}','Shop\MainController@titre')->name('voir_titre');
 
 Route::get('/voir/pays/{id}','Shop\MainController@nation')->name('voirPays');
-        // afficher les categories
-//Route::get('/variete/{id}','Shop\MainController@category')->name('categorie_music');
+
 
          // voir categorie liée aux vidéo(mouves)
 Route::get('/voir/categorie/{id}','Shop\MainController@voirCategorie')->name('voir_categorie');
 
-//Route::get('/nav/categorie/{id}','Shop\MainController@nave');
 
                 //Enregistrement des commentaires
 Route::post('/shop/store{id}','Shop\MainController@store')->name('comment_store');
@@ -77,10 +77,6 @@ Route::get('/backend/delete/{id}','Backend\ArtisteController@delete')->name('bac
  Route::middleware('auth.admin')->group(function () {
               // Affichage de l'espace administrateur
      Route::get('/shop/admin','Shop\ProcessController@admin')->name('shop_admin');
-
-
-//        Route::get('/shop/admin','Shop\ProcessController@admin')->name('backend_admin');
-
 
                // Affichage de la liste des users dans l'espace administrateur
      Route::get('/shop/liste','Shop\MainController@liste')->name('user_liste');
