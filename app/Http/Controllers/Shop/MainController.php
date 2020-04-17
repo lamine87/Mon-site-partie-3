@@ -110,21 +110,16 @@ class MainController extends Controller
     }
 
 
-    public function recherche()
+    public function recherche(Request $request)
     {
-        $mouve = Mouve::all();
-        $mots = Input::get('search');
-        $resultats = Mouve::where('desc_mouve','LIKE','%'.$mots .'%')
-            ->orwhere('lib_mouve','LIKE','%'.$mots.'%')->paginate(4);
-//        $request->validate([
-//            'query'=>'required|min:3',
-//        ]);
-//        $query = $request->input('query');
-//        $user = User::where('name','lien_facebook','lien_instagram','LIKE','%'.$query.'%');
-//
-//        $mouve = Mouve::where('description','photo_principale','LIKE','%'.$query.'%');
+        $user = User::all();
+        $categorie = Categorie::all();
+        $countrie = Country::all();
 
-        return view('shop.recherche',['mouves'=>$mouve,'resultats'=>$resultats]);
+        $search = $request->get('search');
+        $mouve = DB::table('mouves')->where('photo_principale', 'like','%'.$search.'%')->orderBy('created_at', 'desc')->paginate(6);
+
+        return view('shop.recherche',['mouves'=>$mouve,'users'=>$user,'categories'=>$categorie,'countries'=>$countrie]);
 
     }
 

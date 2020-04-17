@@ -185,6 +185,6 @@ class ArtisteController extends Controller
         $actualite = Actualite::find($request->id);
         return view('shop.voir_actu',['actualite'=>$actualite,'countries'=>$countrie,'categories'=>$categorie]);
     }
-    
+
 }
 

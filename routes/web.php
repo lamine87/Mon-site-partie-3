@@ -46,7 +46,7 @@ Route::post('/comments/{id}','Shop\ProcessController@store');
                /* Moteur de recherche */
 //Route::get('/search', ['users' => 'MainController@recherche', 'as' => 'search']);
 
-Route::post('/search','Shop\MainController@recherche')->name('musicRecherche');
+Route::get('/search','Shop\MainController@recherche')->name('musicRecherche');
 
 Auth::routes(['verify' => true]);
                //S'identifier
