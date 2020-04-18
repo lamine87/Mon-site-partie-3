@@ -19,8 +19,6 @@
 
     @include('shop.nav')
 
-
-
 </header>
 <!--fin de navbar-->
 <p id="top"> </p>
@@ -46,7 +44,7 @@
 {{--                                <h5>Je remercie tous mes fans</h5>--}}
 {{--                            </div>--}}
                   </div>
-                <div class="carousel-item" class="carousel-image">
+                <div class="carousel-item">
                     <img src="{{asset('images/booba-font-ecran.jpg')}}" alt="Second Slide" class="carousel-image">
 {{--                            <div class="carousel-caption">--}}
 {{--                                <h2>Meilleur artiste du mois</h2>--}}

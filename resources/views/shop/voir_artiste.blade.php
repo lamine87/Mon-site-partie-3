@@ -33,50 +33,36 @@
 
               @include('comment')
 
-
-
-{{--            <div class="col-md-4 col-sm-12 col-lg-4" >--}}
-{{--                <div class="embed-responsive embed-responsive-16by9">--}}
-{{--                    <div class="d1 conteneur1 embed-responsive-item" >--}}
-{{--                        <img src="{{asset('storage/uploads/'.$mouves->photo_principale)}}"  class="card-img-top img-fluid " alt="Responsive">--}}
-{{--                    </div>--}}
-
-{{--            </div>--}}
-
-{{--                <br>--}}
-{{--                <div>--}}
-{{--                    <a href="{{route('voir_titre', ['id'=>$mouves->user_id])}}" target="_self">--}}
-{{--                    Voir les titres de {{$mouves->user->name}}--}}
-{{--                    </a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-
-
-
     </div>
  </div>
 
     <br><br>
 
     <div class="album py-5 bg-light" xmlns="http://www.w3.org/1999/html">
-        <div class="container" style="float: bottom" >
+        <div class="container" style="float: bottom">
             <div class="row">
-                @foreach($artiste_recommandes as $artiste_recommande)
+                @foreach($mouves as $mouve)
                     <div class="col-md-2 box-shadow">
-                        <a href="{{route('voir_artiste',['id'=>$artiste_recommande->id])}}" target="_self">
-                            <img src="{{asset('storage/uploads/'.$artiste_recommande->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
-                            <p class="card-text"><strong>{{$artiste_recommande->nom}}</strong><br>{{$artiste_recommande->description}}</p>
-                            <div class="d-flex justify-content-between align-items-center">
+                        <a href="{{route('voir_cat',['id'=>$mouve->id])}}" target="_self">
+                            <img src="{{asset('storage/uploads/'.$mouve->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
+
+                            <div class="text-center">
+                                @foreach($users as $user)
+                                    @if($user->id == $mouve->user_id)
+                                        <strong>{{$user->name}}</strong>
+                                    @endif
+                                @endforeach
+
+                                <p class="card-text">{{$mouve->description}}</p>
+
+                                <br>
                             </div>
                         </a>
                     </div>
                 @endforeach
             </div>
             <br><br><br>
-            <div class="col-12 text-center">
-                {{$artiste_recommandes->links()}}
-            </div>
+
         </div>
     </div>
 @endsection

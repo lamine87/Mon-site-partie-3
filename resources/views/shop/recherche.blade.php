@@ -43,7 +43,7 @@
 
 
             <div class="col-12 text-center">
-{{--                {{$mouves->links()}}--}}
+                {{$mouves->links()}}
             </div>
         </div>
     </div>

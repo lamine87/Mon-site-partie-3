@@ -65,7 +65,7 @@ footer{
 
 .carousel-image{
     width: 100%;
-    height: max-content;
+    height: 330px;
 }
 
 #piste{
@@ -140,7 +140,7 @@ h5{
 
 .comment{
     color: #fff891;
-    font-size: 18px;
+    font-size: 14px;
     /*font-weight: bold;*/
     /*display: flex;*/
 }

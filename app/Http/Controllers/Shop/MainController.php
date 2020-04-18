@@ -86,16 +86,17 @@ class MainController extends Controller
 
         $categorie = Categorie::all();
         $mouve = Mouve::find($request->id);
-        $user = User::find($request->id);
+        $user = User::all();
         $countrie = Country::all();
          // Affichage des commentaires
         $commentaire = DB::table('commentaires')
             ->where('mouve_id', '=',$request->id)->orderBy('created_at', 'desc')->get();
 
-        $artiste_recommandes = DB::table('artiste_recommandes')
-            ->orderBy('created_at', 'desc')->paginate(12);
+        $mouves = DB::table('mouves')->take(12)->get();
 
-        return view('shop.voir_artiste',['users'=>$user,'categories'=>$categorie,'countries'=>$countrie,'commentaires'=>$commentaire,'mouve'=>$mouve,'artiste_recommandes' => $artiste_recommandes]);
+
+
+        return view('shop.voir_artiste',['users'=>$user,'categories'=>$categorie,'countries'=>$countrie,'commentaires'=>$commentaire,'mouve'=>$mouve,'mouves'=>$mouves]);
       }
 
 
@@ -117,7 +118,7 @@ class MainController extends Controller
         $countrie = Country::all();
 
         $search = $request->get('search');
-        $mouve = DB::table('mouves')->where('photo_principale', 'like','%'.$search.'%')->orderBy('created_at', 'desc')->paginate(6);
+        $mouve = DB::table('mouves')->where('photo_principale', 'like','%'.$search.'%')->orderBy('created_at', 'desc')->paginate(18);
 
         return view('shop.recherche',['mouves'=>$mouve,'users'=>$user,'categories'=>$categorie,'countries'=>$countrie]);
 
