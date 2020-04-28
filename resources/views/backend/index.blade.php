@@ -9,13 +9,17 @@
                 </div>
                 <form action="{{route('backend_artiste_store')}}" method="POST" enctype="multipart/form-data">
                     @csrf
-                    @if($errors->any())
-                        <div class="alert alert-danger">
-                            @foreach($errors->all() as $error)
-                                <p>{{$error}}</p>
-                            @endforeach
-                        </div>
-                    @endif
+                    <div class="form-row">
+                        <div class="form-group col-md-8">
+                        @if($errors->any())
+                            <div class="alert alert-danger">
+                                @foreach($errors->all() as $error)
+                                    <p>{{$error}}</p>
+                                @endforeach
+                            </div>
+                        @endif
+                      </div>
+                    </div>
                     <div class="form-row">
                         <div class="form-group col-md-8">
                             <label for="url_video">Url Vidéo</label>
@@ -43,6 +47,29 @@
                             <input type="text" class="form-control" id="lien_instagram" name="lien instagram" value="{{old('lien_instagram')}}">
                         </div>
                      </div>
+
+                <div class="form-row">
+                    <div class="form-group col-md-4">
+                        <label for="photo_principale">Genre Musical</label>
+                         <select multiple class="form-control form-control-lg" id="categories" name="categories[]">
+                            @foreach($categories as $categorie)
+                                <option
+{{--                                    {{old('categorie_id') == $categorie->id ? "selected" : ""}}--}}
+                                    value="{{$categorie->id}}">{{$categorie->nom}}</option>
+                            @endforeach
+                         </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                        <label for="photo_principale">Pays</label>
+                        <select class="form-control form-control-lg" id="countrie_id" name="countrie_id">
+                            @foreach($countries as $countrie)
+                                    <option
+                                        value="{{$countrie->id}}"> {{$countrie->nom}}
+                                    </option>
+                            @endforeach
+                        </select>
+                     </div>
+                    </div>
 
                     <div class="form-row">
                         <div class="form-group">

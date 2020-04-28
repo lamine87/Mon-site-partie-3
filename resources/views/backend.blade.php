@@ -47,10 +47,12 @@
                 </li>
 
             </ul>
-            <form class="form-inline mt-2 mt-md-0">
-                <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
+            <form  action="{{route('musicRecherche') }}" class="form-inline mt-2 mt-md-0" method="get">
+                @csrf
+                <input value="{{request()->input('search')}}" class="form-control mr-sm-1" type="text" placeholder="Recherche" aria-label="Search" name="search">
+                <button class="btn btn-outline-primary my-1 my-sm-0" type="submit">Rechercher</button>
             </form>
+
         </div>
     </nav>
     @include('messages_flash')

@@ -4,7 +4,7 @@
         <div class="container">
             <div class="row">
                 @foreach($mouves as $mouve)
-                    <div class="col-md-3 box-shadow">
+                    <div class=" card col-md-3 box-shadow">
                         <a href="{{route('voir_artiste',['id'=>$mouve->id])}}" target="_self">
                             <img src="{{asset('storage/uploads/'.$mouve->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
                         <div class="text-center">
@@ -13,7 +13,6 @@
                                 <strong>{{$user->name}}</strong>
                                 @endif
                             @endforeach
-
                                 <p class="card-text">{{$mouve->description}}</p>
 
                                 @foreach($users as $user)

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Shop;
 
-use App\Artiste_recommade;
+
 use App\Categorie;
 use App\Commentaire;
 use App\Country;
@@ -22,7 +22,7 @@ class MainController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
         $countrie = Country::all();
         $user = User::all();
@@ -31,8 +31,13 @@ class MainController extends Controller
         $mouve = DB::table('mouves')
             ->orderBy('created_at', 'desc')->paginate(20);
 
+//        $users = DB::table('users')
+//            ->orderBy('created_at', 'desc')->paginate(20);
+
         return view('shop.home', ['users' => $user,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
     }
+
+
 
 
     public function voirCategorie(Request $request){
@@ -41,8 +46,8 @@ class MainController extends Controller
         $categorie = Categorie::all();
 
         $mouve = DB::table('mouves')
-            ->join('categorie_mouves', 'mouves.id', '=', 'categorie_mouves.mouve_id')
-            ->join('categories', 'categories.id', '=', 'categorie_mouves.categorie_id')
+            ->join('categorie_mouve', 'mouves.id', '=', 'categorie_mouve.mouve_id')
+            ->join('categories', 'categories.id', '=', 'categorie_mouve.categorie_id')
             ->where('categorie_id', '=', $request->id)
             ->orderBy('mouves.created_at', 'desc')->paginate(12);
 
@@ -92,9 +97,7 @@ class MainController extends Controller
         $commentaire = DB::table('commentaires')
             ->where('mouve_id', '=',$request->id)->orderBy('created_at', 'desc')->get();
 
-        $mouves = DB::table('mouves')->take(12)->get();
-
-
+        $mouves = DB::table('mouves')->take(12)->orderBy('updated_at', 'desc')->get();
 
         return view('shop.voir_artiste',['users'=>$user,'categories'=>$categorie,'countries'=>$countrie,'commentaires'=>$commentaire,'mouve'=>$mouve,'mouves'=>$mouves]);
       }
@@ -103,11 +106,11 @@ class MainController extends Controller
     public function tag(Request $request)
     {
         $categorie = Categorie::all();
-        $users = User::all();
+        $user = User::all();
         $countrie = Country::all();
         $mouve = DB::table('mouves')->where('user_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(6);
 
-        return view('shop.tag_artiste',['users'=>$users,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
+        return view('shop.tag_artiste',['users'=>$user,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
     }
 
 
@@ -168,9 +171,6 @@ class MainController extends Controller
     public function update(Request $request)
     {
         $user = User::find($request->id);
-
-//        $user->update($request->all());
-
         $request->validate(
             [
 //                'name' => 'required',
@@ -178,12 +178,11 @@ class MainController extends Controller
                 'lien_instagram' => 'required',
             ]);
 
-//        $user->name = $request->name;
         $user->lien_facebook = $request->lien_facebook;
         $user->lien_instagram = $request->lien_instagram;
         $user->save();
+        return redirect()->route('user_liste')->with('notice','Les réseaux sociaux ont bien été modifié');
 
-        return redirect()->route('user_liste')->with('notice', 'Musique <strong>' . $user->name . '</strong> a bien été Modifier');
     }
 
 
@@ -198,46 +197,8 @@ class MainController extends Controller
         $user->bannir_user = $request->bannir_user;
         $user->date();
 
-
         return redirect()->route('user_liste')->with('notice', 'Artiste <strong>' . $user->nom . '</strong> a été banni');
 
     }
-
-//
-//    // Appel ajax
-//$.ajax({
-//url: BASE_URL + SPECIFIC,
-//method: 'POST',
-//dataType: 'json',
-//data: dataToSend
-//}).done(function (response) {
-//    console.log(response);
-//
-//    // Si ok => je redirige
-//    if (response.code == 1) {
-//        // Je change ma div alert en mode "succès"
-//        $('#alerts').removeClass('alert-danger').addClass('alert-success').html('Connexion réussie').show();
-//        // Je redirige après 2 secondes
-//
-//        window.setTimeout(function () {
-//            location.href = response.redirect;
-//        }, 1000);
-//    }
-//    // Sinon, il y a une erreur => affichage des erreurs
-//    else {
-//        // Je cible la div des alertes
-//        var $alertsDiv = $('#alerts');
-//        // Je change le contenu HTML par la liste des erreurs retournées
-//        $alertsDiv.empty();
-//        // foreach made in jQuery (ressemble au foreach de PHP)
-//        $.each(response.errors, function (index, value) {
-//            $alertsDiv.append(value + '<br>');
-//        });
-//        // J'affiche les alertes
-//        $alertsDiv.show();
-//    }
-//}).fail(function (jqXHR, textStatus, errorThrown) {
-//    alert('Ajax failed');
-//    console.log(jqXHR, textStatus, errorThrown);
 
 }

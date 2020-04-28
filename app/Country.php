@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Country extends Model
 {
     //
-    protected $fillable=['id'];
+
+    protected $fillable = ['id'];
 
     public function mouve(){
 

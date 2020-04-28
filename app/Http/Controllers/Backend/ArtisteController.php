@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Backend;
 
 
 use App\Actualite;
-use App\Artiste_recommande;
 use App\Categorie;
+use App\CategorieMouve;
 use App\Commentaire;
 use App\Country;
 use App\Http\Controllers\Controller;
@@ -23,10 +23,14 @@ class ArtisteController extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
+
+        $categorie = Categorie::all();
+        $countrie = Country::all();
+
         $mouve = DB::table('mouves')
             ->orderBy('created_at', 'desc')->paginate(6);
 
-        return view('backend.index',['users'=>$user,'mouves'=>$mouve]);
+        return view('backend.index',['users'=>$user,'mouves'=>$mouve,'countries'=>$countrie,'categories'=>$categorie]);
     }
 
 
@@ -36,27 +40,29 @@ class ArtisteController extends Controller
         $categorie = Categorie::all();
         return view('url_video',['categories'=>$categorie]);
     }
-
-
-    // Enregistrer la musique dans la base de données
+    // Enregistrer la musique dans la base de données par l'utilisateur
     public function store(Request $request)
     {
         $user = Auth::user();
+
         $request->validate(
             [
                 'url_video' => 'required',
                 'description' => 'required | max:200',
                 'lien_facebook' => 'required',
                 'lien_instagram' => 'required',
+                'countrie_id'=> 'required',
+                'categories'=> 'required',
+
                 'photo_principale' => 'required|image|max:1999']
         );
         if ($request->hasFile('photo_principale')) {
-
+            $uniqid = uniqid();
             // Recuperer le nom de l'image saisi par l'utilisateur
             $fileName = $request->file('photo_principale')->getClientOriginalName();
 
             //Telechargement de l'image
-            $request->file('photo_principale')->storeAs('public/uploads', $fileName);
+            $request->file('photo_principale')->storeAs('public/uploads', $uniqid.$fileName);
 
             $img = Image::make($request->file('photo_principale')->getRealPath());
 
@@ -67,55 +73,52 @@ class ArtisteController extends Controller
             // Imprimer l'icon sur l'image
             $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
 
-            $img->save('storage/uploads/' .$fileName);
-
+            $img->save('storage/uploads/'.$fileName);
         }
 
             $user->lien_facebook = $request->lien_facebook;
             $user->lien_instagram = $request->lien_instagram;
             $user->save();
 
-
             $mouve = new Mouve();
             $mouve->url_video = $request->url_video;
             $mouve->description = $request->description;
             $mouve->photo_principale = $fileName;
+            $mouve->countrie_id = $request->countrie_id;
+
+
+
             $mouve->user_id = $user->id;
-//        if ($request->is_online == 1) {
-//            $mouve->is_online = $request->is_online;
-//        } else {
-//            $mouve->is_online = false;
-//        }
             $mouve->save();
-//        if ($request->mouves) {
-//            foreach ($request->mouves as $id) {
-//                $mouve->user()->attach($id);
-//            }
-//        }
-//
-//        if ($request->users) {
-//            foreach ($request->users as $id) {
-//                $user->mouve()->attach($id);
-//            }
-//        }
-        return redirect()->route('home')->with('notice', 'La Musique à bien été ajouté');
+
+            if ($request->categories) {
+              foreach ($request->categories as $id) {
+              $mouve->categories()->attach($id);
+             }
+            }
+
+
+        return redirect()->route('home',['id'=>$mouve->categorie_id])
+            ->with('notice','La Musique a bien été ajouté');
     }
 
-     //  Modification de musique dejà enregistrer
+     //  Modification de musique dejà enregistrer dans la base de données
     public function edit(Request $request)
     {
         $user = Auth::user();
         $mouve = Mouve::find($request->id);
-
+        $categorie = Categorie::all();
+        $countrie = Country::all();
         return view('backend.edit', [
-
+            'countries'=>$countrie,
+            'categories'=>$categorie,
             'user' => $user,
             'mouve' => $mouve,
         ]);
     }
 
     // Validation de la modification
-    public function update(Request $request,  $uniqid)
+    public function update(Request $request)
     {
         $user = Auth::user();
         $mouve = Mouve::find($request->id);
@@ -126,6 +129,8 @@ class ArtisteController extends Controller
                 'description' => 'required | max:200',
                 'lien_facebook' => 'required',
                 'lien_instagram' => 'required',
+                'countrie_id'=> 'required',
+                'categories'=> 'required',
 //                'photo_principale' => 'required|image|max:1999'
             ]
         );
@@ -135,19 +140,18 @@ class ArtisteController extends Controller
 //            $fileName = $request->file('photo_principale')->getClientOriginalName();
 //
 //            //Telechargement de l'image
-//            $request->file('photo_principale')->storeAs('public/uploads', $uniqid.$fileName);
+//            $request->file('photo_principale')->storeAs('public/uploads', $fileName);
 //
 //            $img = Image::make($request->file('photo_principale')->getRealPath());
 //
 //            //Dimensionner l'image
 //
-//            $img->resize(400, 400);
+//            $img->resize(500, 500);
 //
 //            // Imprimer l'icon sur l'image
 //            $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
 //
-//            $img->save('storage/uploads/' . $fileName);
-//
+//            $img->save('storage/uploads/' .$fileName);
 //        }
 
         $user->lien_facebook = $request->lien_facebook;
@@ -158,16 +162,20 @@ class ArtisteController extends Controller
         $mouve->url_video = $request->url_video;
         $mouve->description = $request->description;
 //        $mouve->photo_principale = $fileName;
+        $mouve->countrie_id = $request->countrie_id;
         $mouve->save();
 
-        return redirect()->route('home')->with('notice', 'Musique <strong>' .$user->nom. '</strong> a bien été Modifier');
+        $mouve->categories()->sync($request->categories);
+
+
+        return redirect()->route('home')->with('notice','La Musique a bien été modifié');
     }
 
     public function delete(Request $request)
     {
         $mouve = Mouve::find($request->id);
         $mouve->delete();
-        return redirect()->route('home')->with('notice', 'Artiste <strong>' .$mouve->nom. '</strong> a été supprimé');
+        return redirect()->route('home')->with('notice','La Musique a bien été supprimé');
 
     }
     // Affichage de la page actualité

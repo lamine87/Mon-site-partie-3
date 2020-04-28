@@ -1,96 +1,70 @@
 <!doctype html>
-<html lang="fr">
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}">
-    <title>@yield('title')</title>
+
+    <title>MM223.com</title>
+
+    <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
+
     <!-- Custom styles for this template -->
     <link href="{{asset('css/app.css')}}" rel="stylesheet">
     <link href="{{asset('css/style.css')}}" rel="stylesheet">
-    <style>
-        html, body {
-            background-color: #fff;
-            color: #636b6f;
-            font-family: 'Nunito', sans-serif;
-            font-weight: 100;
-            height: 100vh;
-            margin: 0;
-        }
+    <script defer src="{{asset('css/bootstrap.min.css')}}" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
 
-        .full-height {
-            height: 100vh;
-        }
-
-        .flex-center {
-            align-items: center;
-            display: flex;
-            justify-content: center;
-        }
-
-        .position-ref {
-            position: relative;
-        }
-
-        .code {
-            border-right: 2px solid;
-            font-size: 26px;
-            padding: 0 15px 0 15px;
-            text-align: center;
-        }
-
-        .message {
-            font-size: 18px;
-            text-align: center;
-        }
-    </style>
 </head>
+
 <!--Navbar-->
-<body>
+
 <header>
     <nav class="navbar fixed-top navbar-expand-md  navbar-dark bg-dark ">
         <div class="logo">
-            <div class="icon-accueil"><a href="{{route('shop_home')}}"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
+            <div class="icon-accueil">
+                <a href="#"><img src="{{asset('img/icon/logo-menu.png')}}"></a>
             </div>
         </div>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
                 aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
+
         </button>
 
         <!-- link/liens de la navbar-->
 
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
+
+
                 <li class="nav-item active">
-                    <a class="nav-link " href="{{route('shop_home')}}">Accueil<span class="sr-only"></span></a>
+                    @include('info_user')
                 </li>
 
             </ul>
-
+            <form class="form-inline mt-2 mt-md-0">
+                <input class="form-control mr-sm-2" type="text" placeholder="Recherche" aria-label="Search">
+                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Rechercher</button>
+            </form>
         </div>
-
     </nav>
+    @include('messages_flash')
+
 </header>
+<!--fin de navbar-->
+<br><br><br><br>
 
-<div class="flex-center position-ref full-height">
-    <div class="code">
-        @yield('code')
-    </div>
+@yield('content')
 
-    <div class="message" style="padding: 10px;">
-        @yield('message')
-    </div>
-</div>
+<br><br>
 
+<!--Footer-->
 <footer class="page-footer font-small indigo">
 
     <div class="container">
-
-
         <div class="row text-center d-flex justify-content-center pt-5 mb-3">
 
             <div class="col-md-2 mb-3">
@@ -98,7 +72,6 @@
                     <a href="#!">Service</a>
                 </h6>
             </div>
-
 
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
@@ -133,7 +106,8 @@
 
             <div class="col-md-8 col-12 mt-5">
 
-                <p style="line-height: 1.7rem; color: #cce5ff">On sait depuis longtemps que travailler avec du texte lisible
+                <p style="line-height: 1.7rem; color: #cce5ff">
+                    La musique dans le coeur résonne aussi fort que l'amour
 
                 </p>
             </div>
@@ -141,14 +115,11 @@
         </div>
         <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
 
-        <!-- Grid row-->
         <div class="row pb-3">
 
-            <!-- Grid column -->
             <div class="col-md-12">
 
                 <div class="mb-5 flex-center">
-
                     <!-- Facebook -->
                     <a class="facebook">
                         <a href="https://fr-fr.facebook.com/" target="_blank"><img src="{{asset('img/icon/facebook.png')}}" height="37px" width="37px" frameborder="0"/></a>
@@ -165,7 +136,7 @@
 
                     <!--Linkedin -->
                     <a class="li-ic">
-                        <a href="https://www.linkedin.com" target="_blank"><img src="{{asset('img/icon/linkedin.png')}}" height="30px" width="30px" frameborder="0"/></a>
+                        <a href="https://www.--Linkedin.com" target="_blank"><img src="{{asset('img/icon/linkedin.png')}}" height="30px" width="30px" frameborder="0"/></a>
                     </a>
 
                     <!--whatsapp-->
@@ -185,7 +156,6 @@
                     </a>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -198,13 +168,12 @@
 </footer>
 <!-- Footer -->
 
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 
-<script src="{{asset('js/jquery.js')}}"></script>
+</body>
 <script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
 <script src="{{asset('js/holder.min.js')}}"></script>
-<script src="{{asset('js/like.js')}}"></script>
-</body>
+<script src="{{asset('js/jquery.js')}}"></script>
+
 </html>
-
-

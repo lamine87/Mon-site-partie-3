@@ -10,6 +10,13 @@
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h4>Page d'Accueil</h4>
 
+                    @if (session('notice'))
+                        <div class="alert alert-success">
+                            {{ session('notice') }}
+                        </div>
+                    @endif
+
+
                     <div class="btn-toolbar mb-2 mb-md-0 pull-right">
                         <span data-feather="calendar"></span>
                         <a href="{{route('ajoutMusic')}}" class="btn btn-sm btn-outline-secondary">

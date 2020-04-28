@@ -188,6 +188,10 @@ h5{
 #style-admin{
     font-weight: bolder;
     font-size: 16px;
-    background-color: #43e6ff;
-    color: black;
+    background-color: #3d3d3d;
+    /*background-color: #43e6ff;*/
+    color: white;
+}
+.card-text::first-letter {
+    text-transform: uppercase;
 }

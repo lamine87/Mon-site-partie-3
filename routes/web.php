@@ -31,7 +31,6 @@ Route::get('/voir/pays/{id}','Shop\MainController@nation')->name('voirPays');
          // voir categorie liée aux vidéo(mouves)
 Route::get('/voir/categorie/{id}','Shop\MainController@voirCategorie')->name('voir_categorie');
 
-
                 //Enregistrement des commentaires
 Route::post('/shop/store{id}','Shop\MainController@store')->name('comment_store');
 
@@ -43,14 +42,13 @@ Route::get('/voir/actualite/{id}','Backend\ArtisteController@videoActu')->name('
 
 Route::post('/comments/{id}','Shop\ProcessController@store');
 
-               /* Moteur de recherche */
-//Route::get('/search', ['users' => 'MainController@recherche', 'as' => 'search']);
 
 Route::get('/search','Shop\MainController@recherche')->name('musicRecherche');
 
 Auth::routes(['verify' => true]);
                //S'identifier
-Route::get('/backend', 'HomeController@index')->name('home');
+Route::get('/back', 'HomeController@index')->name('home');
+
 
            // Affichage de la page creer un compte
 Route::get('/regi', 'Shop\ProcessController@enregistrer')->name('enregistrer_user');
@@ -59,19 +57,19 @@ Route::get('/regi', 'Shop\ProcessController@enregistrer')->name('enregistrer_use
 Route::get('/music/', 'Backend\ArtisteController@index')->name('ajoutMusic');
 
            // Insertion de musique dans la base de données
-Route::post('/backend/store','Backend\ArtisteController@store')->name('backend_artiste_store');
+Route::post('/back/store','Backend\ArtisteController@store')->name('backend_artiste_store');
 
             // Pour afficher la page d'aide a l'utilisation
 Route::get('/music/aide', 'Backend\ArtisteController@aide')->name('aide_utiliser');
 
            // Editer musique
-Route::get('/backend/edit/{id}','Backend\ArtisteController@edit')->name('backend_edit');
+Route::get('/back/edit/{id}','Backend\ArtisteController@edit')->name('backend_edit');
 
                // Valider la modification artiste
-Route::post('/backend/update/{id}','Backend\ArtisteController@update')->name('backend_update');
+Route::post('/back/update/{id}','Backend\ArtisteController@update')->name('backend_update');
 
               // Supprimer artiste
-Route::get('/backend/delete/{id}','Backend\ArtisteController@delete')->name('backend_delete');
+Route::get('/back/delete/{id}','Backend\ArtisteController@delete')->name('backend_delete');
 
 
  Route::middleware('auth.admin')->group(function () {
@@ -81,28 +79,25 @@ Route::get('/backend/delete/{id}','Backend\ArtisteController@delete')->name('bac
                // Affichage de la liste des users dans l'espace administrateur
      Route::get('/shop/liste','Shop\MainController@liste')->name('user_liste');
 
+
               // Modifier user
-     Route::get('/backend/liste/edit/{id}','Shop\MainController@editListe')->name('backend_liste_edit');
+     Route::get('/back/liste/edit/{id}','Shop\MainController@editListe')->name('backend_liste_edit');
 
               // Valider la modification de user
-     Route::post('/backend/liste/update/{id}','Shop\MainController@update')->name('backend_liste_update');
+     Route::post('/back/liste/update/{id}','Shop\MainController@update')->name('backend_liste_update');
 
               // Supprimer user
-     Route::get('/backend/banir/{id}','Shop\MainController@bannir')->name('backend_bannir_user');
-
-
-//              //  Insertion par l'administrateur dans la base de données
-//        Route::post('/backend/admin/store','Shop\ProcessController@store')->name('shop_store');
+     Route::get('/back/banir/{id}','Shop\MainController@bannir')->name('backend_bannir_user');
 
 
              // Editer musique par l'administrateur
-     Route::get('/backend/admin/edit/{id}','Shop\ProcessController@edit')->name('backend_admin_edit');
+     Route::get('/back/admin/edit/{id}','Shop\ProcessController@edit')->name('backend_admin_edit');
 
                        // Valider la modification
-     Route::post('/backend/admin/update/{id}','Shop\ProcessController@update')->name('backend_admin_update');
+     Route::post('/back/admin/update/{id}','Shop\ProcessController@update')->name('admin_update');
 
                                    // Supprimer artiste
-     Route::get('/backend/admin/delete/{id}','Shop\ProcessController@delete')->name('backend_admin_delete');
+     Route::get('/back/admin/delete/{id}','Shop\ProcessController@delete')->name('backend_admin_delete');
 
 });
 

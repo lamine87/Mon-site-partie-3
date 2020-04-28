@@ -5,7 +5,7 @@
         <div class="row">
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">Ajouter de la Musique</h1>
+                    <h1 class="h2">Modifier la Musique</h1>
 
                 </div>
 
@@ -43,6 +43,29 @@
                             <input type="text" class="form-control" id="lien_instagram" name="lien instagram" value="{{$user->lien_instagram}}">
                         </div>
                      </div>
+
+                    <div class="form-row">
+                        <div class="form-group col-md-4">
+                            <label for="photo_principale">Genre Musical</label>
+                            <select multiple class="form-control form-control-lg" id="categories" name="categories[]">
+                                @foreach($categories as $categorie)
+                                    <option
+{{--                                        {{old('categorie_id') == $categorie->id ? "selected" : ""}}--}}
+                                        value="{{$categorie->id}}">{{$categorie->nom}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label for="photo_principale">Pays</label>
+                            <select class="form-control form-control-lg" id="countrie_id" name="countrie_id">
+                                @foreach($countries as $countrie)
+                                    <option
+                                        value="{{$countrie->id}}"> {{$countrie->nom}}
+                                    </option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
 
                     <div class="form-row">
                         <div class="form-group">

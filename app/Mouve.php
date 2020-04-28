@@ -16,7 +16,7 @@ class Mouve extends Model
     }
 
 
-    public function countrie()
+    public function countries()
     {
         return $this->belongsTo('App\Country', 'id');
     }
@@ -28,7 +28,10 @@ class Mouve extends Model
 
     }
 
-
+    public function connexions()
+    {
+        return $this->belongsTo('App\Connexion', 'id');
+    }
 
 
     public function categories()

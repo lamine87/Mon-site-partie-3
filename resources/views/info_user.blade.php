@@ -1,5 +1,5 @@
 @auth
-    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+    <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();" style="text-decoration: none">
         Se Deconnecter  <i style="color:red" class="fa fa-sign-out-alt"></i>
     </a>
 

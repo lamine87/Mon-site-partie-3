@@ -1,4 +1,4 @@
-@extends('backend')
+@extends('back-admin')
 @section('content')
     <div class=" container">
         <div class="row">
@@ -9,8 +9,12 @@
                 </div>
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h4>Page Accueil</h4>
 
+                    @if (session('notice'))
+                        <div class="alert alert-success">
+                            {{ session('notice') }}
+                        </div>
+                    @endif
                     <div class="btn-toolbar mb-2 mb-md-0 pull-right">
                         <span data-feather="calendar"></span>
                         <a href="{{route('user_liste')}}" class="btn btn-sm btn-primary" id="style-admin">
@@ -28,6 +32,7 @@
                             <th>Description</th>
                             <th>Lien Facebook</th>
                             <th>Lien Instagram</th>
+                            <th>Ligne</th>
                             <th>Image</th>
                             <th>Modifier</th>
                             <th>Supprimer</th>
@@ -52,11 +57,19 @@
                                     @endif
                                 @endforeach
                                 <td>
+                                    @if($mouve->is_online)
+                                        <span class="badge badge-success">Oui</span>
+                                    @else
+                                        <span class="badge badge-danger">Non</span>
+                                    @endif
+                                </td>
+                                <td>
                                     <img style="border: 4px solid #5b64f1" src="{{asset('storage/uploads/'.$mouve->photo_principale)}}" width="50" class="img-thumbnail" alt=""> </td>
 
                                 <td>
                                     <a  href="{{route('backend_admin_edit',['id'=>$mouve->id])}}" class="btn btn-sm btn-primary">Modifier</a>
                                 </td>
+
                                 <td>
                                 <a onclick="return(confirm('sans regret ?'))" href="{{route('backend_admin_delete',['id'=>$mouve->id])}}" class="btn btn-sm btn-outline-danger">Supprimer</a>
                         </td>
@@ -103,21 +116,3 @@
     </div>
 </div>
 @endsection
-
-{{--<td>--}}
-{{--    @if($categorie->is_online)--}}
-{{--        <span class="badge badge-success">oui</span>--}}
-{{--    @else--}}
-{{--        <span class="badge badge-danger">non</span>--}}
-{{--    @endif--}}
-{{--</td>--}}
-
-
-{{--<div class="form-group form-check">--}}
-{{--    @if($categorie->is_online)--}}
-{{--        <input type="checkbox" class="form-check-input" id="is_online" checked name="is_online" value="1">--}}
-{{--    @else--}}
-{{--        <input type="checkbox" class="form-check-input" id="is_online" name="is_online" value="1">--}}
-{{--    @endif--}}
-{{--    <label for="is_online">Cocher la case si la catégorie est online</label>--}}
-{{--</div>--}}
