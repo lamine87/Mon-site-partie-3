@@ -24,7 +24,7 @@
 <p id="top"> </p>
 
 <!--Carousel Animation-->
-<div class=" container-fluid">
+<div class=" container-fluid" id="body-site">
     <div class="row">
         <div class="col-md-12">
             <div class="bs-exemple">
@@ -38,14 +38,14 @@
 
             <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="{{asset('images/maitre-gims-dadju.jpg')}}" alt="First Slide" class="carousel-image">
+                    <img src="{{asset('images/maitre-gims-dadju.jpg')}}" alt="image rap" class="carousel-image">
 {{--                            <div class="carousel-caption">--}}
 {{--                                <h2>Meilleur artiste du mois</h2>--}}
 {{--                                <h5>Je remercie tous mes fans</h5>--}}
 {{--                            </div>--}}
                   </div>
                 <div class="carousel-item">
-                    <img src="{{asset('images/booba-font-ecran.jpg')}}" alt="Second Slide" class="carousel-image">
+                    <img src="{{asset('images/booba-font-ecran.jpg')}}" alt="image chanteur" class="carousel-image">
 {{--                            <div class="carousel-caption">--}}
 {{--                                <h2>Meilleur artiste du mois</h2>--}}
 {{--                                <h5>Je remercie tous mes fans</h5>--}}
@@ -139,7 +139,6 @@
 
                 <p style="line-height: 1.7rem; color: #cce5ff">
                     La musique dans le coeur résonne aussi fort que l'amour
-
                 </p>
             </div>
 

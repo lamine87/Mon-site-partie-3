@@ -9,14 +9,21 @@
                 </div>
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-
+                    <div class="btn-toolbar mb-2 mb-md-0 pull-left">
                     @if (session('notice'))
                         <div class="alert alert-success">
                             {{ session('notice') }}
                         </div>
                     @endif
+                    </div>
+
+                    <div class="btn-toolbar">
+                        <a href="{{route('listeAfficheComment')}}" class="btn btn-sm btn-primary" id="style-admin">
+                            Les Commentaires
+                        </a>
+                    </div>
+
                     <div class="btn-toolbar mb-2 mb-md-0 pull-right">
-                        <span data-feather="calendar"></span>
                         <a href="{{route('user_liste')}}" class="btn btn-sm btn-primary" id="style-admin">
                             Liste des utilisateurs
                         </a>

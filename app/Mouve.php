@@ -22,9 +22,9 @@ class Mouve extends Model
     }
 
 
-    public function commentaires()
+    public function commentaire()
     {
-        return $this->belongsTo('App\Commentaire', 'id', 'url_video');
+        return $this->hasMany('App\Commentaire', 'id');
 
     }
 

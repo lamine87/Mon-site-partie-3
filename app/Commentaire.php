@@ -8,11 +8,11 @@ class Commentaire extends Model
 {
     //
 
-    protected $table = ['url_video'];
+    protected $table = ['id','nom','email','texte'];
 
 
-    public function mouve(){
-        return $this->belongsTo('App\Mouve','id','url_video');
+    public function mouves(){
+        return $this->belongsTo('App\Mouve','id');
     }
 
 

@@ -77,7 +77,7 @@
     <div class="row">
         <div class="col-12 text-center ">
             <p>1 - Cliquez sur partager</p>
-            <img style="border: 4px solid #5b64f1" src="{{asset('images/capture-youtube2.png')}}" width="700" class="img-thumbnail" alt="">
+            <img style="border: 4px solid #5b64f1" src="{{asset('images/capture-youtube2.png')}}" width="700" class="img-thumbnail" alt="Musique Malienne">
         </div>
     </div>
 </div>
@@ -86,7 +86,7 @@
     <div class="row">
         <div class="col-12 text-center ">
             <p>2 - Cliquez sur Integrer</p>
-            <img style="border: 4px solid #5b64f1" src="{{asset('images/capture-youtube3.png')}}" width="700" class="img-thumbnail" alt="">
+            <img style="border: 4px solid #5b64f1" src="{{asset('images/capture-youtube3.png')}}" width="700" class="img-thumbnail" alt="Musique Mrançaise">
         </div>
     </div>
 </div>
@@ -95,7 +95,7 @@
     <div class="row">
         <div class="col-12 text-center ">
             <p>3 - Copier l'url en jaune</p>
-            <img style="border: 4px solid #5b64f1" src="{{asset('images/youtube-capture.png')}}" width="700" class="img-thumbnail" alt="">
+            <img style="border: 4px solid #5b64f1" src="{{asset('images/youtube-capture.png')}}" width="700" class="img-thumbnail" alt="Musique Americaine">
         </div>
     </div>
 </div>
@@ -103,7 +103,7 @@
 <br>
 <div class="plus-haut">
     <a href="#top" title="Haut de page" class="scrollup " >
-        <img src="{{asset('img/icon/icon_top.png')}}" alt="Monter en haut de page"/>
+        <img src="{{asset('img/icon/icon_top.png')}}" alt="Photo musique"/>
     </a>
 </div>
 

@@ -26,7 +26,7 @@
 
 <div class="plus-haut">
     <a href="#top" title="Haut de page" class="scrollup " >
-        <img src="{{asset('img/icon/icon_top.png')}}" alt="Monter en haut de page"/>
+        <img src="{{asset('img/icon/icon_top.png')}}" alt="Musique"/>
     </a>
 </div>
 

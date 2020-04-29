@@ -6,7 +6,7 @@
                 @foreach($mouves as $mouve)
                     <div class=" card col-md-3 box-shadow">
                         <a href="{{route('voir_artiste',['id'=>$mouve->id])}}" target="_self">
-                            <img src="{{asset('storage/uploads/'.$mouve->photo_principale)}}"  class="card-img-top img-fluid" alt="Responsive">
+                            <img src="{{asset('storage/uploads/'.$mouve->photo_principale)}}"  class="card-img-top img-fluid" alt="image artiste">
                         <div class="text-center">
                             @foreach($users as $user)
                                 @if($user->id == $mouve->user_id)
@@ -17,8 +17,8 @@
 
                                 @foreach($users as $user)
                                     @if($user->id == $mouve->user_id)
-                                <a href="{{asset($user->lien_facebook)}}" type="" title="Facebook" class="" target="_blank"><img src="{{asset('img/icon/facebook-c32.png')}}"></a>
-                                <a href="{{asset($user->lien_instagram)}}" type=""  title="Instagram" class="" target="_blank"><img src="{{asset('img/icon/insta-c32.png')}}"></a>
+                                <a href="{{asset($user->lien_facebook)}}" type="" title="Facebook" class="" target="_blank"><img src="{{asset('img/icon/facebook-c32.png')}}" alt="facebook"></a>
+                                <a href="{{asset($user->lien_instagram)}}" type=""  title="Instagram" class="" target="_blank"><img src="{{asset('img/icon/insta-c32.png')}}" alt="instagram"></a>
                                     @endif
                                 @endforeach
                                 <br><br><br>
@@ -28,12 +28,14 @@
                 @endforeach
 
             </div>
-            <br>
+            <br> <br>
 
      @include('button-tag')
+
      <br>  <br>  <br>
      <div class="col-12 text-center">
          {{$mouves->links()}}
+
      </div>
  </div>
 </div>

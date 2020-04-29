@@ -195,3 +195,9 @@ h5{
 .card-text::first-letter {
     text-transform: uppercase;
 }
+.container-comment::first-letter{
+    text-transform: uppercase;
+}
+#body-site  {
+    background-color: #737373;
+}

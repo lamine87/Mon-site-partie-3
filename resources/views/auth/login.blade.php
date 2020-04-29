@@ -77,11 +77,11 @@
                                     {{ __('Connexion') }}
                                 </button>
 
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link-dark" href="{{ route('password.request') }}">
-                                        {{ __('Mot de passe oublié ?') }}
-                                    </a>
-                                @endif
+{{--                                @if (Route::has('password.request'))--}}
+{{--                                    <a class="btn btn-link-dark" href="{{ route('password.request') }}">--}}
+{{--                                        {{ __('Mot de passe oublié ?') }}--}}
+{{--                                    </a>--}}
+{{--                                @endif--}}
                             </div>
                         </div>
                     </form>

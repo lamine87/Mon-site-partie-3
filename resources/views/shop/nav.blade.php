@@ -2,7 +2,7 @@
     <div class="logo">
         <div class="icon-accueil">
             <a href="{{route('shop_home')}}">
-                <img src="{{asset('img/icon/logo-menu.png')}}">
+                <img src="{{asset('img/icon/logo-menu.png')}}" alt="Rap">
             </a>
         </div>
      </div>
@@ -41,7 +41,7 @@
                     @foreach($countries as $countrie)
                         <a class="dropdown-item" href="{{route('voirPays',['id'=>$countrie->id])}}">
                             {{$countrie->nom}}
-                            <img src="{{asset('img/icon/'.$countrie->image_drapeau)}}">
+                            <img src="{{asset('img/icon/'.$countrie->image_drapeau)}}" alt="Musique Malienne">
                         </a>
                     @endforeach
                     </div>

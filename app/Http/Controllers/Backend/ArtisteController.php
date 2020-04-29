@@ -48,12 +48,11 @@ class ArtisteController extends Controller
         $request->validate(
             [
                 'url_video' => 'required',
-                'description' => 'required | max:200',
+                'description' => 'required | max:150',
                 'lien_facebook' => 'required',
                 'lien_instagram' => 'required',
                 'countrie_id'=> 'required',
                 'categories'=> 'required',
-
                 'photo_principale' => 'required|image|max:1999']
         );
         if ($request->hasFile('photo_principale')) {
@@ -86,8 +85,6 @@ class ArtisteController extends Controller
             $mouve->photo_principale = $fileName;
             $mouve->countrie_id = $request->countrie_id;
 
-
-
             $mouve->user_id = $user->id;
             $mouve->save();
 
@@ -97,9 +94,8 @@ class ArtisteController extends Controller
              }
             }
 
-
         return redirect()->route('home',['id'=>$mouve->categorie_id])
-            ->with('notice','La Musique a bien été ajouté');
+            ->with('notice','La Musique a bien été ajouté, attendez la validation par l\'administrateur ');
     }
 
      //  Modification de musique dejà enregistrer dans la base de données
@@ -126,7 +122,7 @@ class ArtisteController extends Controller
         $request->validate(
             [
                 'url_video' => 'required',
-                'description' => 'required | max:200',
+                'description' => 'required | max:150',
                 'lien_facebook' => 'required',
                 'lien_instagram' => 'required',
                 'countrie_id'=> 'required',
@@ -135,12 +131,12 @@ class ArtisteController extends Controller
             ]
         );
 //        if ($request->hasFile('photo_principale')) {
-//
+//            $uniqid = uniqid();
 //            // Recuperer le nom de l'image saisi par l'utilisateur
 //            $fileName = $request->file('photo_principale')->getClientOriginalName();
 //
 //            //Telechargement de l'image
-//            $request->file('photo_principale')->storeAs('public/uploads', $fileName);
+//            $request->file('photo_principale')->storeAs('public/uploads', $uniqid.$fileName);
 //
 //            $img = Image::make($request->file('photo_principale')->getRealPath());
 //
@@ -151,7 +147,7 @@ class ArtisteController extends Controller
 //            // Imprimer l'icon sur l'image
 //            $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
 //
-//            $img->save('storage/uploads/' .$fileName);
+//            $img->save('storage/uploads/'.$fileName);
 //        }
 
         $user->lien_facebook = $request->lien_facebook;

@@ -22,11 +22,11 @@ Route::get('/voir/cat/{id}','Shop\MainController@artiste')->name('voir_cat');
 
         //Affichage du Tag
 Route::get('/tag/{id}','Shop\MainController@tag')->name('voir_tag');
+
                    // Voir titre de l'artiste
 Route::get('/titre{id}','Shop\MainController@titre')->name('voir_titre');
-
+            // Voir pays des musiques
 Route::get('/voir/pays/{id}','Shop\MainController@nation')->name('voirPays');
-
 
          // voir categorie liée aux vidéo(mouves)
 Route::get('/voir/categorie/{id}','Shop\MainController@voirCategorie')->name('voir_categorie');
@@ -79,6 +79,11 @@ Route::get('/back/delete/{id}','Backend\ArtisteController@delete')->name('backen
                // Affichage de la liste des users dans l'espace administrateur
      Route::get('/shop/liste','Shop\MainController@liste')->name('user_liste');
 
+           // Modération de commentaires
+     Route::get('/liste/comment','Shop\ProcessController@listeComment')->name('listeAfficheComment');
+
+                 //  Suppression de commentaire
+     Route::get('/delete/comment/{id}','Shop\ProcessController@deleted')->name('deleteComment');
 
               // Modifier user
      Route::get('/back/liste/edit/{id}','Shop\MainController@editListe')->name('backend_liste_edit');
@@ -88,7 +93,6 @@ Route::get('/back/delete/{id}','Backend\ArtisteController@delete')->name('backen
 
               // Supprimer user
      Route::get('/back/banir/{id}','Shop\MainController@bannir')->name('backend_bannir_user');
-
 
              // Editer musique par l'administrateur
      Route::get('/back/admin/edit/{id}','Shop\ProcessController@edit')->name('backend_admin_edit');

@@ -22,19 +22,18 @@ class MainController extends Controller
 {
     //
 
-    public function index(Request $request)
+    public function index()
     {
-        $countrie = Country::all();
+
         $user = User::all();
+        $countrie = Country::all();
         $categorie = Categorie::all();
-
-        $mouve = DB::table('mouves')
-            ->orderBy('created_at', 'desc')->paginate(20);
-
-//        $users = DB::table('users')
+//        $user = DB::table('users')
 //            ->orderBy('created_at', 'desc')->paginate(20);
 
-        return view('shop.home', ['users' => $user,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
+        $mouve = Mouve::where('is_online','=',1)->orderBy('created_at', 'desc')->paginate(20);
+
+        return view('shop.home', ['users'=>$user,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
     }
 
 
@@ -58,8 +57,6 @@ class MainController extends Controller
             'countries'=>$countrie
         ]);
     }
-
-
 
 
     public function nation(Request $request){
@@ -105,8 +102,8 @@ class MainController extends Controller
 
     public function tag(Request $request)
     {
-        $categorie = Categorie::all();
         $user = User::all();
+        $categorie = Categorie::all();
         $countrie = Country::all();
         $mouve = DB::table('mouves')->where('user_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(6);
 
@@ -200,5 +197,6 @@ class MainController extends Controller
         return redirect()->route('user_liste')->with('notice', 'Artiste <strong>' . $user->nom . '</strong> a été banni');
 
     }
+
 
 }

@@ -117,10 +117,20 @@ class ProcessController extends Controller
         $mouve = Mouve::find($request->id);
         $mouve->delete();
         return redirect()->route('shop_admin')->with('notice','La Musique a bien été supprimé');
-
     }
+    // Modération de commentaires
+    public function listeComment(Request $request){
+        $commentaire = DB::table('commentaires')
+            ->orderBy('created_at', 'desc')->paginate(20);
+        return view('backend.liste_comment', ['commentaires' => $commentaire]);
+    }
+    public function deleted(Request $request){
+//        DB::table('commentaires')->where('id', '=', $request->id)->delete();
+        $commentaire = Commentaire::find($request->id);
+        $commentaire->delete();
 
-
+        return redirect()->route('listeAfficheComment', ['commentaires' => $commentaire]);
+    }
 
 
 }

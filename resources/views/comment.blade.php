@@ -46,7 +46,7 @@
         </div>
 
         <button type="submit" class="">
-            <img src="{{asset('img/icon/envoyer3.png')}}" title="envoyer">
+            <img src="{{asset('img/icon/envoyer3.png')}}" title="envoyer" alt="chanteur mali">
         </button>
 
     </form>
