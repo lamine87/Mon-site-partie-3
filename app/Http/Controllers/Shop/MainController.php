@@ -144,7 +144,7 @@ class MainController extends Controller
                 'email'=>'required',
                 'texte'=>'required|max:50']
         );
-        $commentaire = new Commentaire();
+        $commentaire = new Commentaire([]);
         $commentaire->nom = $request->nom;
         $commentaire->email = $request->email;
         $commentaire->texte = $request->texte;
