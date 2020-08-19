@@ -7,7 +7,7 @@
     <meta name="author" content="">
     <link rel="icon" href="{{asset('img/icon/logo5-menu.png')}}">
 
-    <title>MM223.com</title>
+    <title>M223music.com le meilleur de la musique</title>
 
     <!-- Bootstrap core CSS -->
     <link href="{{asset('css/bootstrap.min.css')}}" rel="stylesheet">
@@ -61,17 +61,31 @@
 
 <br><br>
 
-<!--Footer-->
+
+<!-- Footer -->
+
+<div class="plus-haut">
+    <a href="#top" title="Haut de page" class="scrollup" >
+        <img src="{{asset('img/icon/icon_top.png')}}" alt="Monter en haut de page"/>
+    </a>
+</div>
+
+
+<br>
 <footer class="page-footer font-small indigo">
 
     <div class="container">
+
         <div class="row text-center d-flex justify-content-center pt-5 mb-3">
 
-            <div class="col-md-2 mb-3">
-                <h6 class="text-uppercase font-weight-bold">
-                    <a href="#!">Service</a>
-                </h6>
-            </div>
+            {{--            <div class="col-md-2 mb-3">--}}
+
+            {{--                <h6 class="text-uppercase font-weight-bold">--}}
+            {{--                    <a href="#">Service</a>--}}
+            {{--                </h6>--}}
+
+            {{--            </div>--}}
+
 
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
@@ -95,7 +109,7 @@
 
             <div class="col-md-2 mb-3">
                 <h6 class="text-uppercase font-weight-bold">
-                    <a href="#!">Contact</a>
+                    <a href="{{route('nousContacter')}}">Contact</a>
                 </h6>
             </div>
 
@@ -108,72 +122,74 @@
 
                 <p style="line-height: 1.7rem; color: #cce5ff">
                     La musique dans le coeur résonne aussi fort que l'amour
-
                 </p>
             </div>
 
         </div>
         <hr class="clearfix d-md-none rgba-white-light" style="margin: 10% 15% 5%;">
 
+        <!-- Grid row-->
         <div class="row pb-3">
 
+            <!-- Grid column -->
             <div class="col-md-12">
 
                 <div class="mb-5 flex-center">
+
                     <!-- Facebook -->
                     <a class="facebook">
-                        <a href="https://fr-fr.facebook.com/" target="_blank"><img src="{{asset('img/icon/facebook.png')}}" height="37px" width="37px" frameborder="0"/></a>
+                        <a href="https://www.facebook.com/M223music" target="_blank"><img src="{{asset('img/icon/facebook.png')}}" height="37px" width="37px" frameborder="0"/></a>
                     </a>
                     <!-- Twitter -->
                     <a class="Twitter">
-                        <a href="https://www.Twitter.com" target="_blank"><img src="{{asset('img/icon/twitter.png')}}" height="35px" width="35px" frameborder="0"/></a>
+                        <a href="https://twitter.com/m223music" target="_blank"><img src="{{asset('img/icon/twitter.png')}}" height="35px" width="35px" frameborder="0"/></a>
 
                     </a>
-                    <!-- Snapchat-->
-                    <a class="snapchat">
-                        <a href="https://www.snapchat.com" target="_blank"><img src="{{asset('img/icon/snapchat.png')}}" height="31px" width="31px" frameborder="0"/></a>
-                    </a>
+                {{--                    <!-- Snapchat-->--}}
+                {{--                    <a class="snapchat">--}}
+                {{--                        <a href="https://www.snapchat.com" target="_blank"><img src="{{asset('img/icon/snapchat.png')}}" height="31px" width="31px" frameborder="0"/></a>--}}
+                {{--                    </a>--}}
 
-                    <!--Linkedin -->
+                <!--Linkedin -->
                     <a class="li-ic">
-                        <a href="https://www.--Linkedin.com" target="_blank"><img src="{{asset('img/icon/linkedin.png')}}" height="30px" width="30px" frameborder="0"/></a>
+                        <a href="https://www.linkedin.com/in/m-music-b610961a9/" target="_blank"><img src="{{asset('img/icon/linkedin.png')}}" height="30px" width="30px" frameborder="0"/></a>
                     </a>
 
                     <!--whatsapp-->
-                    <a class="whatsapp">
-                        <a href="https://www.whatsapp.com" target="_blank"><img src="{{asset('img/icon/whatsapp.png')}}" height="30px" width="30px" frameborder="0"/></a>
-                    </a>
+                {{--                    <a class="whatsapp">--}}
+                {{--                        <a href="https://www.whatsapp.com" target="_blank"><img src="{{asset('img/icon/whatsapp.png')}}" height="30px" width="30px" frameborder="0"/></a>--}}
+                {{--                    </a>--}}
 
-                    <!--Youtube-->
+                <!--Youtube-->
                     <a class="youtube">
-                        <a href="https://www.youtube.com/?gl=FR&hl=fr" target="_blank"><img src="{{asset('img/icon/youtube.png')}}" height="33px" width="33px" frameborder="0"/></a>
+                        <a href="https://www.youtube.com/channel/UCsHds9fFTG0tz4p9LprUiGA" target="_blank"><img src="{{asset('img/icon/youtube.png')}}" height="33px" width="33px" frameborder="0"/></a>
                     </a>
 
 
                     <!--Instagram-->
                     <a class="instagram">
-                        <a href="https://www.instagram.com/?hl=fr" target="_blank"><img src="{{asset('img/icon/instagram.png')}}" height="36px" width="36px" frameborder="0"/></a>
+                        <a href="https://www.instagram.com/m223music/" target="_blank"><img src="{{asset('img/icon/instagram.png')}}" height="36px" width="36px" frameborder="0"/></a>
                     </a>
                 </div>
             </div>
+
         </div>
     </div>
 
     <!-- Copyright -->
-    <div class="footer-copyright text-center py-3" style="color: #cce5ff">© 2019 Copyright:
-        <a href="#"> MM223.com</a>
+    <div class="footer-copyright text-center py-3" style="color: #cce5ff">© 2020 Copyright:
+        <a href="#"> M223music.com</a>
     </div>
     <!-- Copyright -->
 
 </footer>
 <!-- Footer -->
 
-<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-
-</body>
-<script src="{{asset('js/popper.min.js')}}"></script>
 <script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/holder.min.js')}}"></script>
 <script src="{{asset('js/jquery.js')}}"></script>
-
+<script src="{{asset('js/popper.min.js')}}"></script>
+<script src="{{asset('js/holder.min.js')}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/like.js')}}"></script>
+</body>
 </html>

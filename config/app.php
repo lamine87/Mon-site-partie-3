@@ -81,7 +81,7 @@ return [
     */
 
     'locale' => 'fr',
-
+    Date::setLocale('fr'),
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -106,7 +106,7 @@ return [
     |
     */
 
-    'faker_locale' => 'en_US',
+    'faker_locale' => 'fr',
 
     /*
     |--------------------------------------------------------------------------
@@ -122,7 +122,7 @@ return [
     'key' => env('APP_KEY'),
 
     'cipher' => 'AES-256-CBC',
-
+    'pagination' => 'custom-paginator',
     /*
     |--------------------------------------------------------------------------
     | Autoloaded Service Providers
@@ -164,6 +164,9 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Madcoda\Youtube\YoutubeServiceProviderLaravel5::class,
         DevDojo\Chatter\ChatterServiceProvider::class,
+        Alaouy\Youtube\YoutubeServiceProvider::class,
+        Cog\Likeable\Providers\LikeableServiceProvider::class,
+        Jenssegers\Date\DateServiceProvider::class,
 
 
         /*
@@ -231,6 +234,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Youtube'   => Madcoda\Youtube\Facades\Youtube::class,
+        'Youtube' => Alaouy\Youtube\Facades\Youtube::class,
+        'Date' => Jenssegers\Date\Date::class,
     ],
 
 ];

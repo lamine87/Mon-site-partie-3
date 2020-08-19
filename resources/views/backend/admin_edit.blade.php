@@ -52,7 +52,7 @@
                             <select multiple class="form-control form-control-lg" id="categories" name="categories[]">
                                 @foreach($categories as $categorie)
                                     <option
-                                        {{old('categorie_id') == $categorie->id ? "selected" : ""}}
+                                        {{old('categories') == $categorie->id ? "selected" : "multiple"}}
                                         value="{{$categorie->id}}">{{$categorie->nom}}</option>
                                 @endforeach
                             </select>
@@ -62,6 +62,7 @@
                             <select class="form-control form-control-lg" id="countrie_id" name="countrie_id">
                                 @foreach($countries as $countrie)
                                     <option
+                                        {{old('countrie_id') == $countrie->id ? "selected" : ""}}
                                         value="{{$countrie->id}}"> {{$countrie->nom}}
                                     </option>
                                 @endforeach

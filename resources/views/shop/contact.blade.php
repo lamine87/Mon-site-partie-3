@@ -1,53 +1,35 @@
+@extends('page')
+@section('content')
 <div class="container">
-    <div id="html">
-        <button data-toggle="modal" data-target="#formulaire" class="btn btn-primary">Informations</button>
-    </div>
-    <div class="modal fade" id="formulaire">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Vos infos :</h4>
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body row">
-                    <form class="col" action="test.php">
-                        <div class="form-group">
-                            <label for="nom" class="form-control-label">Nom</label>
-                            <input type="text" class="form-control" name ="nom" id="nom" placeholder="Votre nom">
-                        </div>
-                        <div class="form-group">
-                            <label for="email" class="form-control-label">Email</label>
-                            <input type="email" class="form-control" name="email" id="email" placeholder="Votre Email">
-                        </div>
-                        <button type="submit" class="btn btn-primary pull-right">Envoyer</button>
-                    </form>
-                </div>
-            </div>
+  <div class="row">
+    <div class="col-md-12">
+      <br>
+        <div class="text-contact">
+          <strong><h3>Contactez-nous</h3></strong>
+        </div>
+
+        <div class="text-contact">
+           <strong><p>Téléphone :</p></strong>
+        </div>
+
+         <div class="text-contact">
+               <p>0033782615316</p>
+         </div>
+
+           <div class="text-contact">
+               <p>0022379089929</p>
+           </div>
+
+         <br>
+        <div class="text-contact">
+           <strong> <h4> Email : </h4></strong>
+        </div>
+
+        <div class="text-contact">
+            <p>m.musique223@yahoo.com</p>
         </div>
     </div>
-</div>
-<script src="{{asset('js/popper.min.js')}}"></script>
-<script src="{{asset('js/bootstrap.min.js')}}"></script>
-<script src="{{asset('js/holder.min.js')}}"></script>
-<script src="{{asset('js/jquery.js')}}"></script>
-<script>
-    $(function(){
-        $('form').submit(function(e) {
-            e.preventDefault()
-            var $form = $(this)
-            $.post($form.attr('action'), $form.serialize())
-                .done(function(data) {
-                    $('#html').html(data)
-                    $('#formulaire').modal('hide')
-                })
-                .fail(function() {
-                    alert('ça ne marche pas...')
-                })
-        })
-        $('.modal').on('shown.bs.modal', function(){
-            $('input:first').focus()
-        })
-    })
-</script>
+  </div>
+ </div>
+@endsection
+

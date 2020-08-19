@@ -62,10 +62,8 @@ footer{
 .carousel-item{
     text-align: center;
 }
-
-.carousel-image{
-    width: 100%;
-    height: 330px;
+.text-contact{
+    text-align: center;
 }
 
 #piste{
@@ -85,17 +83,6 @@ footer{
 
 p{
     color: #0a0a0a;
-}
-
-.plus-haut{
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    position: fixed;
-    bottom: 50px;
-    right: 20px;
-    font-size: 20px;
-    text-align: right;
 }
 
 .logo img{
@@ -161,9 +148,7 @@ h5{
 
 }
 #style-log{
-
     background-color: #FFFFFF80;
-
 }
 .col-form-label{
     font-size: 15px;
@@ -191,13 +176,123 @@ h5{
     background-color: #3d3d3d;
     /*background-color: #43e6ff;*/
     color: white;
+    border-radius: 5px;
 }
 .card-text::first-letter {
     text-transform: uppercase;
+}
+.card-text{
+    text-decoration: none !important;
+}
+.card-text:hover{
+    color: red;
 }
 .container-comment::first-letter{
     text-transform: uppercase;
 }
 #body-site  {
     background-color: #737373;
+}
+
+.cherchable{
+    text-align: center;
+}
+.row-like{
+    display: flex;
+    flex: 1;
+    text-decoration: none;
+}
+.post-like{
+    display: flex;
+    text-decoration: none;
+}
+.post-dislike{
+    display: flex;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.reseaux{
+    margin-left: 10px;
+}
+.voteBar{
+    width: 100%;
+    height: 4px;
+    background-color: red;
+}
+.progress-bar{
+    width: 50%;
+    height: 4px;
+    background-color: #3bea9f;
+}
+.votecell{
+    width: 150px;
+}
+.like{
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+.dislike{
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+.button-comment{
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+.partage-reseaux{
+    margin-bottom: 7px;
+}
+.btn-primary{
+    padding: 2px;
+    /*border: none;*/
+    /*margin: 1px;*/
+    /*background: transparent;*/
+    /*color: black !important;*/
+}
+#text-center{
+    text-decoration: none !important;
+}
+
+
+
+
+.horloge{
+    display: flex;
+}
+.card-img-top{
+    border-radius: 5px;
+}
+
+#actuPhoto{
+    float: right;
+    margin-top: 0px;
+}
+
+.scrollup {
+    width: 20px;
+    height: 20px;
+    position: fixed;
+    bottom: 50px;
+    right: 15px;
+    display: none;
+    color: white;
+    font-size: 50px;
+    text-align: center;
+    line-height: 37px;
+}
+
+.scrollup:hover {
+    color: white;
+}
+.text-uppercase a{
+    text-decoration: none;
+}
+
+#dropdown-menu{
+    height:150pt;
+    overflow: auto;
 }

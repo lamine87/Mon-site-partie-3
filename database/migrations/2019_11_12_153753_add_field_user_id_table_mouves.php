@@ -17,7 +17,7 @@ class AddFieldUserIdTableMouves extends Migration
             //
             $table->unsignedBigInteger('user_id')->nullable();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('set null');
-            Schema::enableForeignKeyConstraints();
+//            Schema::enableForeignKeyConstraints();
         });
     }
 

@@ -1,22 +1,16 @@
 @extends('page')
 @section('content')
     <br>
-    <div class="container">
-        <div class="row">
-            <div class="resultat de recherche">
+            <div class="cherchable">
                 <h2>Resultat de Recherche</h2>
-
             </div>
-        </div>
-    </div>
-
     <div class="album py-5 bg-light" xmlns="http://www.w3.org/1999/html">
         <div class="container">
             <div class="row">
                 @foreach($mouves as $mouve)
                     <div class="col-md-2 box-shadow">
-                        <a href="{{route('voir_artiste',['id'=>$mouve->id])}}" target="_self">
-                            <img src="{{asset('storage/uploads/'.$mouve->photo_principale)}}"  class="card-img-top img-fluid" alt="image rappeur">
+                        <a href="{{route('voirArtiste',['id'=>$mouve->id])}}" target="_self">
+                            <img src="{{asset('storage/uploads/'.$mouve->photo_principale)}}"  class="card-img-top img-fluid" alt="Image de Rap">
                             <div class="text-center">
                                 @foreach($users as $user)
                                     @if($user->id == $mouve->user_id)

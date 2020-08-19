@@ -49,9 +49,13 @@
                             <label for="photo_principale">Genre Musical</label>
                             <select multiple class="form-control form-control-lg" id="categories" name="categories[]">
                                 @foreach($categories as $categorie)
+{{--                                    @if($categorie->id == $categorie->id)--}}
                                     <option
-{{--                                        {{old('categorie_id') == $categorie->id ? "selected" : ""}}--}}
-                                        value="{{$categorie->id}}">{{$categorie->nom}}</option>
+                                        {{old('categories') !== $categorie->id ? "selected" : ""}}
+                                        selected="selected"
+                                        value="{{$categorie->id}}">{{$categorie->nom}}
+                                    </option>
+{{--                                    @endif--}}
                                 @endforeach
                             </select>
                         </div>
@@ -60,7 +64,8 @@
                             <select class="form-control form-control-lg" id="countrie_id" name="countrie_id">
                                 @foreach($countries as $countrie)
                                     <option
-                                        value="{{$countrie->id}}"> {{$countrie->nom}}
+                                         {{old('countrie_id') == $countrie->id ? "selected" : ""}}
+                                          value="{{$countrie->id}}">{{$countrie->nom}}
                                     </option>
                                 @endforeach
                             </select>

@@ -8,7 +8,7 @@
                 </div>
 
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h4>Page d'Accueil</h4>
+                    <h4>Espace Utilisateur</h4>
 
                     @if (session('notice'))
                         <div class="alert alert-success">
@@ -30,9 +30,9 @@
                         <thead class="table-dark">
                         <tr>
                             <th>Numero</th>
-                            <th>Nom</th>
-                            <th>Lien Facebook</th>
-                            <th>Lien Instagram</th>
+{{--                            <th>Nom</th>--}}
+{{--                            <th>Lien Facebook</th>--}}
+{{--                            <th>Lien Instagram</th>--}}
                             <th>Image</th>
                             <th>Modifier</th>
                             <th>Supprimer</th>
@@ -46,16 +46,16 @@
 
                           @foreach($users as $user)
                                     @if($user->id == $mouve->user_id)
-                                          <td>{{$user->name}}</td>
+{{--                                          <td>{{$user->name}}</td>--}}
                                     @endif
                                 @endforeach
 
-                                @foreach($users as $user)
-                                    @if($user->id == $mouve->user_id)
-                                       <td>{{$user->lien_facebook}}</td>
-                                       <td>{{$user->lien_instagram}}</td>
-                                    @endif
-                                @endforeach
+{{--                                @foreach($users as $user)--}}
+{{--                                    @if($user->id == $mouve->user_id)--}}
+{{--                                       <td>{{$user->lien_facebook}}</td>--}}
+{{--                                       <td>{{$user->lien_instagram}}</td>--}}
+{{--                                    @endif--}}
+{{--                                @endforeach--}}
 
                                 <td>
                                     <img style="border: 4px solid #5b64f1" src="{{asset('storage/uploads/'.$mouve->photo_principale)}}" width="50" class="img-thumbnail" alt="">
@@ -75,6 +75,39 @@
           </div>
     </div>
 </div>
+
+    <div class=" container">
+        <div class="row">
+            <div class="col-12 text-center ">
+                <div class="table-responsive">
+                    <table class="table table-sm">
+                        <thead class="table-dark">
+                        <tr>
+                            <th>Numero</th>
+                            <th>Lien Facebook</th>
+                            <th>Lien Instagram</th>
+                        </tr>
+                        </thead>
+
+
+{{--                        @foreach($mouves as $mouve)--}}
+                            <tbody>
+                                @foreach($users as $user)
+                                    @if($user->id == $mouve->user_id)
+                                       <td>{{$user->id}}</td>
+                                       <td>{{$user->lien_facebook}}</td>
+                                       <td>{{$user->lien_instagram}}</td>
+                                    @endif
+                                @endforeach
+
+                            </tbody>
+{{--                        @endforeach--}}
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
 
 <div class=" container">
     <div class="row">

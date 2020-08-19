@@ -11,20 +11,31 @@
 |
 */
 
+//Route::group(['scheme' => 'https'], function () {
 
 Route::get('/','Shop\MainController@index')->name('shop_home');
 
-Route::get('/recommandation/{id}','Shop\MainController@recommande')->name('artiste_recommande');
-
-Route::get('/voir/artiste','Shop\MainController@artiste')->name('voir_artiste');
-
-Route::get('/voir/cat/{id}','Shop\MainController@artiste')->name('voir_cat');
+Route::get('/voir/video/{id}','Shop\MainController@artiste')->name('voirArtiste');
 
         //Affichage du Tag
 Route::get('/tag/{id}','Shop\MainController@tag')->name('voir_tag');
 
+  // Afficher page contact
+Route::get('/contact','Shop\ProcessController@contacter')->name('nousContacter');
+
                    // Voir titre de l'artiste
 Route::get('/titre{id}','Shop\MainController@titre')->name('voir_titre');
+
+     // Liker la vidéo
+//Route::get('/video/like/{id}','Backend\AimeController@update')->name('postLike');
+
+Route::post('/urlLike','Backend\AimeController@postLike')->name('like');
+        // Disliker la vidéo
+//Route::post('/video/dislike/{id}','Backend\AimeController@updateDislike')->name('postDislike');
+
+    // Enregistrer les vues
+Route::post('/video/vue/{id}','Backend\AimeController@store')->name('postVue');
+
             // Voir pays des musiques
 Route::get('/voir/pays/{id}','Shop\MainController@nation')->name('voirPays');
 
@@ -36,8 +47,10 @@ Route::post('/shop/store{id}','Shop\MainController@store')->name('comment_store'
 
 Route::get('/affiche/comment','Shop\MainController@store')->name('comment_Video');
 
+        // Afficher pub vidéo
 Route::get('/actualite','Backend\ArtisteController@actu')->name('afficheActu');
 
+    // Afficher lecture de vidéo pub
 Route::get('/voir/actualite/{id}','Backend\ArtisteController@videoActu')->name('voirActu');
 
 Route::post('/comments/{id}','Shop\ProcessController@store');
@@ -103,8 +116,18 @@ Route::get('/back/delete/{id}','Backend\ArtisteController@delete')->name('backen
                                    // Supprimer artiste
      Route::get('/back/admin/delete/{id}','Shop\ProcessController@delete')->name('backend_admin_delete');
 
+
+               // Affichage du formulaire d'enregistrement de pub vidéo
+     Route::get('/pub/video','Shop\ProcessController@pub')->name('pubVideo');
+
+         // Enregistrer dans actualité (Pub Vidéo)
+     Route::post('/pub/video/store','Shop\ProcessController@store')->name('pubVideoStore');
+
+         // Enregistrer dans actualité (Pub Image)
+     Route::post('/pub/image/store','Shop\ProcessController@storePub')->name('pubImageStore');
+
 });
 
-
+//});
 
 

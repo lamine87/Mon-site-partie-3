@@ -8,7 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Mouve extends Model
 {
 
-    protected $fillable = ['id', 'nom'];
+//    protected $fillable = ['id', 'nom','url_video'];
+
 
     public function user()
     {
@@ -27,12 +28,11 @@ class Mouve extends Model
         return $this->hasMany('App\Commentaire', 'id');
 
     }
-
-    public function connexions()
+    public function like()
     {
-        return $this->belongsTo('App\Connexion', 'id');
-    }
+        return $this->hasMany('App\Like', 'id');
 
+    }
 
     public function categories()
     {

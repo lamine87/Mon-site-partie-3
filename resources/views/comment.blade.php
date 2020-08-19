@@ -1,23 +1,22 @@
 <div class="col-md-4 col-sm-12 col-lg-4">
-
     <form action="{{route('comment_store',['id'=>$mouve->id])}}"  method="POST" enctype="multipart/form-data" class="voir">
         @csrf
-        @if($errors->any())
-            <div class="alert alert-danger">
-                @foreach($errors->all() as $error)
-                    <p>{{$error}}</p>
-                @endforeach
-            </div>
-        @endif
+{{--        @if($errors->any())--}}
+{{--            <div class="alert alert-danger">--}}
+{{--                @foreach($errors->all() as $error)--}}
+{{--                    <p>{{$error}}</p>--}}
+{{--                @endforeach--}}
+{{--            </div>--}}
+{{--        @endif--}}
         <div class="form-row">
 
               <div id="comment" style="overflow:scroll; height:180px;" class="form-group col-md-12">
                     @foreach($commentaires as $commentaire)
                         <div class="comment">
-                        <img class="comment" style="width:25px; height:25px;" src="{{asset('img/icon/icon-homme.png')}}">
+                        <img class="comment" style="width:25px; height:25px;" src="{{asset('img/icon/icon-homme.png')}}" alt="Musique Malienne">
 
                             {{$commentaire->nom}}
-        {{--                      <br>{{$commentaire->created_at}}--}}
+{{--                              <br>{{$commentaire->created_at}}--}}
 
                             <div class="container-comment">
                                {{$commentaire->texte}}
@@ -45,8 +44,8 @@
             </div>
         </div>
 
-        <button type="submit" class="">
-            <img src="{{asset('img/icon/envoyer3.png')}}" title="envoyer" alt="chanteur mali">
+        <button type="submit" class="button-comment">
+            <img src="{{asset('img/icon/envoyer3.png')}}" title="envoyer" alt="Rappeur Malien">
         </button>
 
     </form>

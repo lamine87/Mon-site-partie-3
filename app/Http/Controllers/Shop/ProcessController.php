@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Shop;
 
 
+use App\Actualite;
 use App\Categorie;
 use App\Commentaire;
 use App\Country;
@@ -23,14 +24,12 @@ class ProcessController extends Controller
         return view('auth.register');
     }
 
-
     // Affichage de l'interface administrateur
     public function admin()
     {
         $user = User::all();
         $mouve = DB::table('mouves')
-            ->orderBy('created_at', 'desc')->paginate(6);
-
+            ->orderBy('created_at', 'desc')->simplePaginate(6);
         return view('backend.admin_gestion', ['users' => $user, 'mouves' => $mouve]);
     }
 
@@ -105,7 +104,6 @@ class ProcessController extends Controller
             $mouve->is_online = false;
         }
 
-
         $mouve->save();
         $mouve->categories()->sync($request->categories);
 
@@ -132,5 +130,89 @@ class ProcessController extends Controller
         return redirect()->route('listeAfficheComment', ['commentaires' => $commentaire]);
     }
 
+    public function contacter(){
+        $categorie = Categorie::all();
+        $countrie = Country::all();
+        return view('shop.contact',['categories'=>$categorie,'countries'=>$countrie]);
+    }
+     // Affichage du formulaire d'enregistrement de pub Vidéo
+    public function pub(){
+        return view('backend.pub');
+    }
+
+    // Affichage du formulaire d'enregistrement de pub Image
+//    public function pubActu(){
+//        return view('backend.pub_image');
+//    }
+
+            // Enregistrer la pub Vidéo
+    public function store(Request $request){
+        $request->validate(
+            [
+                'url_video' => 'required',
+                'description' => 'required | max:500',
+                'photo_principale' => 'required|image|max:4000']
+        );
+        if ($request->hasFile('photo_principale')) {
+            $uniqid = uniqid();
+            // Recuperer le nom de l'image saisi par l'utilisateur
+            $fileName = $request->file('photo_principale')->getClientOriginalName();
+
+            //Telechargement de l'image
+            $request->file('photo_principale')->storeAs('public/uploads', $uniqid.$fileName);
+
+            $img = Image::make($request->file('photo_principale')->getRealPath());
+
+            //Dimensionner l'image
+
+            $img->resize(900, 800);
+
+            // Imprimer l'icon sur l'image
+            $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
+
+            $img->save('storage/uploads/'.$fileName);
+        }
+
+        $actualite = new Actualite();
+        $actualite->url_video = $request->url_video;
+        $actualite->description = $request->description;
+        $actualite->photo_principale = $fileName;
+        $actualite->save();
+        return redirect()->route('shop_admin')->with('notice','La Pub a bien été ajouté');
+    }
+
+    // Enregistrer la pub Image
+    public function storePub(Request $request){
+        $request->validate(
+            [
+                'description' => 'required | max:500',
+                'photo_principale' => 'required|image|max:4000']
+        );
+        if ($request->hasFile('photo_principale')) {
+            $uniqid = uniqid();
+            // Recuperer le nom de l'image saisi par l'utilisateur
+            $fileName = $request->file('photo_principale')->getClientOriginalName();
+
+            //Telechargement de l'image
+            $request->file('photo_principale')->storeAs('public/uploads', $uniqid.$fileName);
+
+            $img = Image::make($request->file('photo_principale')->getRealPath());
+
+            //Dimensionner l'image
+
+            $img->resize(900, 800);
+
+            // Imprimer l'icon sur l'image
+            $img->insert(public_path('img/icon/logo_color.png'), 'bottom-right', 5, 5);
+
+            $img->save('storage/uploads/'.$fileName);
+        }
+
+        $actualite = new Actualite();
+        $actualite->description = $request->description;
+        $actualite->photo_principale = $fileName;
+        $actualite->save();
+        return redirect()->route('shop_admin')->with('notice','La Pub a bien été ajouté');
+    }
 
 }

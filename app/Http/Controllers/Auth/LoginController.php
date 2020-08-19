@@ -51,7 +51,7 @@ public function login(Request $request)
 
         if ($user->hasRole('Administrateur')) {
 
-            //Si le user est admin redirection vers le backend
+            //Si le user est admin redirection vers l'espace administrateur'
             return redirect()->route('shop_admin');
         } else {
             //Si le user n'est pas admin
@@ -62,5 +62,4 @@ public function login(Request $request)
         return redirect()->route('login')->with('message', 'impossible de vous identifier');
     }
    }
-
 }

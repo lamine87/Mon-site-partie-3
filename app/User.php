@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','lien_facebook','lien_instagram',
     ];
 
     /**
@@ -34,7 +34,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $casts = [
-        'name', 'email', 'password', 'bannir_user'
+        'name', 'email', 'password', 'bannir_user','lien_facebook','lien_instagram',
     ];
     protected $dates = [
         'bannir_user'

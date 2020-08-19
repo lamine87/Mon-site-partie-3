@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Http\ViewComposers\PageComposer;
+use http\Url;
 use Illuminate\Support\ServiceProvider;
 
 

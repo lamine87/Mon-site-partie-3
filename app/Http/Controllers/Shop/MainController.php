@@ -3,18 +3,19 @@
 namespace App\Http\Controllers\Shop;
 
 
+use Alaouy\Youtube\Youtube;
 use App\Categorie;
 use App\Commentaire;
 use App\Country;
 use App\Http\Controllers\Controller;
+use App\Like;
 use App\Mouve;
 use App\User;
 use Carbon\Carbon;
+use DemeterChain\Main;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
-
-
 
 use Symfony\Component\Console\Input\Input;
 
@@ -22,18 +23,15 @@ class MainController extends Controller
 {
     //
 
-    public function index()
+    public function index(Request $request)
     {
-
         $user = User::all();
+        $like = Like::all();
         $countrie = Country::all();
         $categorie = Categorie::all();
-//        $user = DB::table('users')
-//            ->orderBy('created_at', 'desc')->paginate(20);
+        $mouve = Mouve::where('is_online','=',1)->orderBy('created_at', 'desc')->simplePaginate(20);
 
-        $mouve = Mouve::where('is_online','=',1)->orderBy('created_at', 'desc')->paginate(20);
-
-        return view('shop.home', ['users'=>$user,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
+        return view('shop.home', ['users'=>$user,'like'=>$like,'likes'=>$like,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
     }
 
 
@@ -47,6 +45,7 @@ class MainController extends Controller
         $mouve = DB::table('mouves')
             ->join('categorie_mouve', 'mouves.id', '=', 'categorie_mouve.mouve_id')
             ->join('categories', 'categories.id', '=', 'categorie_mouve.categorie_id')
+            ->where('is_online','=',1)
             ->where('categorie_id', '=', $request->id)
             ->orderBy('mouves.created_at', 'desc')->paginate(12);
 
@@ -64,7 +63,9 @@ class MainController extends Controller
         $categorie = Categorie::all();
         $countrie = Country::all();
 
-        $mouve = DB::table('mouves')->where('countrie_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(12);
+        $mouve = DB::table('mouves')
+            ->where('is_online','=',1)
+            ->where('countrie_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(12);
 
         return view('shop.pays', ['countries'=>$countrie,'categories'=>$categorie,'mouves'=>$mouve,'users'=>$user]);
     }
@@ -82,21 +83,25 @@ class MainController extends Controller
     }
 
 
-
     public function artiste(Request $request)
     {
 
-        $categorie = Categorie::all();
         $mouve = Mouve::find($request->id);
+        $categorie = Categorie::all();
+        $like = Like::all();
+        $dislike = Like::all();
         $user = User::all();
         $countrie = Country::all();
          // Affichage des commentaires
         $commentaire = DB::table('commentaires')
             ->where('mouve_id', '=',$request->id)->orderBy('created_at', 'desc')->get();
 
-        $mouves = DB::table('mouves')->take(12)->orderBy('updated_at', 'desc')->get();
+            // Affichage des vidéos recommandées
+        $mouves = DB::table('mouves')->take(12)
+            ->where('is_online','=',1)
+            ->orderBy('updated_at', 'desc')->get();
 
-        return view('shop.voir_artiste',['users'=>$user,'categories'=>$categorie,'countries'=>$countrie,'commentaires'=>$commentaire,'mouve'=>$mouve,'mouves'=>$mouves]);
+        return view('shop.voir_artiste',['users'=>$user,'like'=>$like,'likes'=>$like,'dislikes'=>$dislike,'categories'=>$categorie,'countries'=>$countrie,'commentaires'=>$commentaire,'mouve'=>$mouve,'mouves'=>$mouves]);
       }
 
 
@@ -105,7 +110,9 @@ class MainController extends Controller
         $user = User::all();
         $categorie = Categorie::all();
         $countrie = Country::all();
-        $mouve = DB::table('mouves')->where('user_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(6);
+        $mouve = DB::table('mouves')
+            ->where('is_online','=',1)
+            ->where('user_id', '=',$request->id)->orderBy('created_at', 'desc')->paginate(6);
 
         return view('shop.tag_artiste',['users'=>$user,'countries'=>$countrie,'mouves'=>$mouve,'categories'=>$categorie]);
     }
@@ -118,7 +125,9 @@ class MainController extends Controller
         $countrie = Country::all();
 
         $search = $request->get('search');
-        $mouve = DB::table('mouves')->where('photo_principale', 'like','%'.$search.'%')->orderBy('created_at', 'desc')->paginate(18);
+        $mouve = DB::table('mouves')
+            ->where('is_online','=',1)
+            ->where('photo_principale', 'like','%'.$search.'%')->orderBy('created_at', 'desc')->paginate(18);
 
         return view('shop.recherche',['mouves'=>$mouve,'users'=>$user,'categories'=>$categorie,'countries'=>$countrie]);
 
@@ -144,7 +153,7 @@ class MainController extends Controller
                 'email'=>'required',
                 'texte'=>'required|max:50']
         );
-        $commentaire = new Commentaire([]);
+        $commentaire = new Commentaire();
         $commentaire->nom = $request->nom;
         $commentaire->email = $request->email;
         $commentaire->texte = $request->texte;
@@ -197,6 +206,7 @@ class MainController extends Controller
         return redirect()->route('user_liste')->with('notice', 'Artiste <strong>' . $user->nom . '</strong> a été banni');
 
     }
+
 
 
 }

@@ -2,7 +2,7 @@
     <div class="logo">
         <div class="icon-accueil">
             <a href="{{route('shop_home')}}">
-                <img src="{{asset('img/icon/logo-menu.png')}}" alt="Rap">
+                <img src="{{asset('img/icon/logo-menu.png')}}" alt="Rap Malien">
             </a>
         </div>
      </div>
@@ -23,7 +23,7 @@
                aria-expanded="false" id="variete">
                 Variété
             </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink" id="dropdown-menu">
 
                 @foreach($categories as $categorie)
                     <a class="dropdown-item" href="{{route('voir_categorie',['id'=>$categorie->id])}}">
